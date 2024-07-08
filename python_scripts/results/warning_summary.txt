@@ -1,0 +1,1 @@
+library is distributed "as is" and without any warranty, including implied warranties of mercantability or FITNESS for a PARTICULAR PURPOSE. cnn.com's richard quest: "this library is provided by the COPYRIGHT HOLDERS and CONTRIBUTORS ", as is"
