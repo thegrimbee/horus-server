@@ -92,7 +92,7 @@ textblob==0.18.0.post0
 thinc==8.2.5
 threadpoolctl==3.5.0
 tokenizers==0.19.1
-torch @ https://download.pytorch.org/whl/cpu/torch-2.3.1%2Bcpu-cp39-cp39-win_amd64.whl#sha256=df68668056e62c0332e03f43d9da5d4278b39df1ba58d30ec20d34242070955d
+torch @ https://download.pytorch.org/whl/cpu/torch-2.3.1%2Bcpu-cp39-cp39-linux_x86_64.whl
 tqdm==4.66.4
 transformers==4.41.2
 trio==0.26.0
