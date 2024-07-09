@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
-from analyse import analyse_tos, SentenceTransformerFeatures
+from analyse import analyse_tos
 from flask_cors import CORS
+from ai import SentenceTransformerFeatures, POSTagFeatures, NERFeatures, KeywordFeatures, DependencyFeatures, SentimentFeatures
 
 app = Flask(__name__)
 CORS(app)    
