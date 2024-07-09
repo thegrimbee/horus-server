@@ -6,10 +6,11 @@ from sklearn.base import BaseEstimator, TransformerMixin
 import pandas as pd
 import os
 from googlesearch import search
-from bs4 import BeautifulSoup
-import requests
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
 import numpy as np
-from scipy.sparse import csr_matrix
 import warnings
 
 # Ignore FutureWarning
@@ -53,18 +54,24 @@ def analyse_tos(tos, app=""):
     scans = pd.read_csv(scans_path)
     #online_scans_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQjd7DmxuwsQccfgX02enJf-g4DnWnvN5ZAkEHSfedfpqTF9JjYoSkvFUWNoTIy_PW6Kl_yhuzYtHy5/pub?gid=0&single=true&output=csv' 
     #online_scans = pd.read_csv(online_scans_url)
-    if tos.strip()== '':
+    if app not in scans['App'].values and tos.strip()== '':
         print("No terms of service found for " + app + ". Searching the web...")
         tos_urls = search(app + " terms of service", num=1, stop=1)
         url = ''
         for i in tos_urls:
             url = i
-        html_content = requests.get(url).text
-        soup = BeautifulSoup(html_content, "html.parser")
-        # Find all of the text between paragraph tags and strip out the html
-        tos_list = soup.find_all('p')
-        for i in tos_list:
-            tos += i.get_text()
+        # Use Selenium to get the page that includes JavaScript content
+        user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+        service = Service(ChromeDriverManager().install())
+        options = webdriver.ChromeOptions()
+        options.add_argument('--headless')
+        driver = webdriver.Chrome(service=service, options=options)
+        driver.get(url)
+        p_elements = driver.find_elements(By.TAG_NAME, 'p')
+        for i in p_elements:
+            tos += i.text
+        driver.quit()
+        
     print(scans['App'].values)
     if app in scans['App'].values:
         categorized_sentences = scans[scans['App'] == app].iloc[0].tolist()
