@@ -23,6 +23,7 @@ gensim==4.3.2
 google==3.0.0
 google-auth==2.30.0
 google-auth-oauthlib==1.2.0
+gunicorn==22.0.0
 h11==0.14.0
 httplib2==0.22.0
 huggingface-hub==0.23.4
