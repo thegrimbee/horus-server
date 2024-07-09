@@ -16,8 +16,6 @@ import warnings
 # Ignore FutureWarning
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-#Using torch
-import torch
 from transformers import AutoTokenizer, T5ForConditionalGeneration
 from ai import SentenceTransformerFeatures, POSTagFeatures, NERFeatures, KeywordFeatures, DependencyFeatures, SentimentFeatures
     

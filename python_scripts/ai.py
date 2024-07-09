@@ -146,11 +146,11 @@ class KeywordFeatures(BaseEstimator, TransformerMixin):
         
 #         return np.array([get_average_embedding(doc) for doc in X])
     
-minilm_path = os.path.join(os.path.dirname(__file__), '../ai_models/minilm')
+# minilm_path = os.path.join(os.path.dirname(__file__), '../ai_models/minilm')
 # Custom transformer for Sentence Transformers
 class SentenceTransformerFeatures(BaseEstimator, TransformerMixin):
     def __init__(self, model_name='sentence-transformers/all-MiniLM-L6-v2'):
-        self.model = SentenceTransformer(minilm_path)
+        self.model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
         self.model_name = model_name
     
     def fit(self, X, y=None):
