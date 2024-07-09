@@ -1,3 +1,17 @@
- These Terms also contain an arbitration clause under which certain claims may not be brought in a court or decided by a jury, so please read this document carefully
- In other words, your use of the Application is at your own risk and we do not assume any liability, or make any warranties of any kind, express or implied, with respect to the Application
-It allows free updates from the date of acquisition
+  AMD may also terminate this License for any reason upon ten (10) days prior notice
+  THE SOFTWARE AND DOCUMENTATION ARE PROVIDED \'93\loch\f0 \hich\f0 AS IS\'94\loch\f0  AND WITHOUT WARRANTY OF ANY KIND AND AMD EXPRESSLY DISCLAIM
+\hich\af0\dbch\af31505\loch\f0 
+S ALL WARRANTIES, EXPRESS, IMPLIED, OR STATUTORY INCLUDING, BUT NOT LIMITED TO, ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT OR WARRANTIES ARISING FROM CUSTOM OF TRADE OR COURSE OF USAGE
+  AMD DOES NOT WARR
+\hich\af0\dbch\af31505\loch\f0 A\hich\af0\dbch\af31505\loch\f0 
+NT THAT THE FUNCTIONS CONTAINED IN THE SOFTWARE WILL MEET YOUR REQUIREMENTS, OR THAT THE OPERATION OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE, OR THAT DEFECTS IN THE SOFTWARE WILL BE CORRECTED
+  THE ENTIRE RISK AS TO THE RESULTS AND PERFORMANCE O
+\hich\af0\dbch\af31505\loch\f0 F\hich\af0\dbch\af31505\loch\f0 
+ THE SOFTWARE IS ASSUMED BY YOU
+  SHOULD THE SOFTWARE PROVE DEFECTIVE, YOU (AND NOT AMD OR AMD'S AUTHORIZED REPRESENT
+\hich\af0\dbch\af31505\loch\f0 A\hich\af0\dbch\af31505\loch\f0 
+TIVE) ASSUME THE ENTIRE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION
+  THE SOFTWARE IS NOT INTENDED FOR USE IN MEDICAL, LIFE SAVING OR LIFE SUSTAINING, NUCLEAR OR WEAPONS RELATED APPLICATIONS
+  In no event shall AMD's total liability to You for all damages, lo
+\hich\af0\dbch\af31505\loch\f0 s\hich\af0\dbch\af31505\loch\f0 
+ses, and causes of action (whether in contract, tort (including negligence) or otherwise) exceed the amount of $100 USD
