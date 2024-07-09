@@ -115,3 +115,296 @@ dll that implements LZFSE data decompression
     (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
     HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
     ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE","7-Zip is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation. the ""BSD 3-clause License"" is used for the code in 7z dll that implements LZFSE data decompression. Neither the name of the copyright holder(s) nor the names of any contributors may be used to endorse or promote products derived from this software.","library is distributed ""as is"" and without any warranty, including implied warranties of mercantability or FITNESS for a PARTICULAR PURPOSE. cnn.com's richard quest: ""this library is provided by the COPYRIGHT HOLDERS and CONTRIBUTORS "", as is""","the COPYRIGHT OWNER OR CONTRIBUTORS ARE NOT LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES. HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)"
+Cloudflare,"Effective May 26, 2023Welcome to Cloudflare! As used in these Terms of Use, ""Cloudflare"", ""us"" or ""we"" refers to Cloudflare, Inc
+ and its affiliates
+PLEASE READ THE FOLLOWING CAREFULLY AS IT AFFECTS YOUR LEGAL RIGHTS
+ These terms of use (“Terms”), along with Cloudflare’s Privacy Policy, govern your use of Cloudflare’s Websites and Online Services
+ For the purposes of these Terms, (i) “Websites” refers to www
+cloudflare
+com, as well as the other websites that Cloudflare operates and that link to these Terms, and (ii) “Online Services” means Cloudflare’s products and services that are publicly available without a subscription or a Cloudflare account, including, but not limited to, the 1
+1
+1
+1 Public DNS Resolver service, including 1
+1
+1
+1 for Families, Cloudflare Time Services, RPKI Portal, and Distributed Web Gateway and Resolver
+ If you do not agree to these Terms, you must not access or use our Websites or Online Services
+THESE TERMS DO NOT APPLY TO YOUR ACCESS AND USE OF THE CLOUDFLARE PRODUCTS AND SERVICES THAT ARE PROVIDED UNDER THE SELF-SERVE SUBSCRIPTION AGREEMENT, THE ENTERPRISE SUBSCRIPTION AGREEMENT, OR OTHER WRITTEN AGREEMENT SIGNED BETWEEN YOU AND CLOUDFLARE (IF APPLICABLE)
+If there is a conflict between these Terms and additional terms applicable to a given Website or Online Service, the additional terms will control for that conflict
+LICENSE GRANT TO CLOUDFLAREBy submitting, posting, or publishing your content, suggestions, enhancement requests, recommendations, feedback, information, data, or comments (“Content”) to any Website or Online Service, you are granting Cloudflare a perpetual, irrevocable, worldwide, non-exclusive, royalty-free right and license (with the right to sublicense) to use, incorporate, exploit, display, perform, reproduce, distribute, and prepare derivative works of your Content
+ By submitting, posting, and publishing your Content, you represent and warrant that your Content, does not: (i) infringe, violate, or misappropriate any third-party right, including any copyright, trademark, patent, trade secret, moral right, privacy right, right of publicity, or any other intellectual property or proprietary right; or (ii) slander, defame, or libel any third-party
+INFRINGEMENT AND ABUSEWith respect to the Online Services, Cloudflare operates pass-through network services used to improve network performance, not hosting provider services and as such, we have no way of removing improper or infringing material from our users’ websites, third party sites or their hosting services
+ Cloudflare has no control over any decentralized name registries, and cannot remove material that is accessible through the Distributed Web Gateway
+ Copyright holders or their agents concerned with material served through Cloudflare’s network should submit a notification of claimed copyright infringement or other abuse through our automated form located at https://www
+cloudflare
+com/abuse/
+If you would prefer not to use our complaint submission form, you may mail your complaint to:Cloudflare, Inc
+Attn: Legal Department101 Townsend St,San Francisco, CA 94107When submitting abuse reports, please provide detailed information supporting your complaint as well as an affidavit attesting to its validity
+ Please bear in mind that unless you have requested us not to share your information through the opt-out procedure described on our abuse page, Cloudflare may provide copies of, or information from your notification or complaint to anyone it considers appropriate, including but not limited to the Cloudflare user whom the notification or complaint relates to, the Cloudflare user’s hosting provider, website operator and visitors of Cloudflare’s own website
+ For more information about how Cloudflare handles complaints please visit https://www
+cloudflare
+com/abuse/
+If you intend to automate the process by which you submit abuse reports , you will need to request access to an abuse API token
+ You understand that Cloudflare may suspend or revoke an abuse API token at any time in Cloudflare’s reasonable discretion
+TERMINATION OF USE; DISCONTINUATION AND MODIFICATION OF THE WEBSITES AND ONLINE SERVICESWe may at our sole discretion suspend or terminate your access to the Websites and/or Online Services at any time, with or without notice for any reason or no reason at all
+ We also reserve the right to modify or discontinue the Websites and/or Online Services at any time (including, without limitation, by limiting or discontinuing certain features of the Websites and/or Online Services) without notice to you
+THIRD-PARTY WEBSITESThe Websites and Online Services may contain links to third-party websites
+ Such linked websites are not under our control, and we are not responsible for their content
+OWNERSHIP; PROPRIETARY RIGHTSThe visual interfaces, graphics, design, compilation, information, data, computer code (including source code or object code), products, software, services, and all other elements of the Websites and Online Services (the “Materials”) provided by Cloudflare are protected by all relevant intellectual property and proprietary rights and applicable laws
+ All Materials contained in the Websites and Online Services are the property of Cloudflare or our third-party licensors
+ Except as expressly authorized by Cloudflare you may not make use of the Materials
+ Cloudflare reserves all rights to the Materials not granted expressly in these Terms
+PROHIBITED USESAs a condition of your use of the Websites and Online Services, you will not use the Websites or Online Services for any purpose that is unlawful or prohibited by these Terms
+ You may not attempt to gain unauthorized access to any Websites or Online Services, other accounts, computer systems, or networks connected to any Cloudflare server or to any of the Websites or Online Services through hacking, password mining, or any other means
+ You may not obtain or attempt to obtain any materials or information through any means not intentionally made available through the Websites or Online Services
+DISCLAIMERS; NO WARRANTIESTHE WEBSITES AND ONLINE SERVICES ARE MADE AVAILABLE TO YOU ON AN ""AS IS"" AND ""AS AVAILABLE"" BASIS, WITH THE EXPRESS UNDERSTANDING THAT THE CLOUDFLARE ENTITIES HAVE NO OBLIGATION TO MONITOR, CONTROL, OR VET THE CONTENT OR DATA APPEARING ON THE WEBSITES AND ONLINE SERVICES
+ AS SUCH, YOUR USE OF THE WEBSITES AND ONLINE SERVICES IS AT YOUR OWN DISCRETION AND RISK
+GOVERNING LAWThese Terms will be governed by the laws of the State of California without regard to conflict of law principles
+ To the extent that any lawsuit or court proceeding is permitted hereunder, you and Cloudflare agree to submit to the personal and exclusive jurisdiction of the state and federal courts located within San Francisco County, California for the purpose of litigating all such disputes
+CHANGES TO THESE TERMSCloudflare reserves the right to make modifications to these Terms at any time
+ Revised versions of these Terms will be posted to this Website
+ Unless otherwise specified, any modifications to the Terms will take effect the day they are posted to this Website
+ If you do not agree with the revised Terms, your sole and exclusive remedy will be to discontinue your use of the Websites and Online Services
+GENERALThese Terms, together with the Privacy Policy and any applicable product limits, disclaimers, or other terms presented to you on our Website or documentation, each of which are incorporated by reference into the Agreement, constitute the entire and exclusive understanding and agreement between you and Cloudflare regarding your use of and access to the Websites and Online Services
+ Use of section headers in these Terms is for convenience only and will not have any impact on the interpretation of particular provisions
+ You may not assign or transfer these Terms or your rights hereunder, in whole or in part, by operation of law or otherwise, without our prior written consent
+ We may assign these Terms at any time without notice
+ The failure to require performance of any provision will not affect our right to require performance at any time thereafter, nor will a waiver of any breach or default of these Terms or any provision of these Terms constitute a waiver of any subsequent breach or default or a waiver of the provision itself
+ In the event that any part of these Terms is held to be invalid or unenforceable, the unenforceable part will be given effect to the greatest extent possible and the remaining parts will remain in full force and effect
+ You acknowledge that the Websites and Online Services are not intended to be technology protection measures that will help you comply with the Children’s Online Privacy Protection Act (COPPA) or Children's Internet Protection Act (CIPA)
+CONTACT INFORMATIONThe Websites and Online Services are operated by Cloudflare, Inc
+, located at 101 Townsend St
+, San Francisco, California 94107
+ You may contact us by sending correspondence to the foregoing address or by emailing us at support@cloudflare
+com
+ If you are a California resident, you may have these Terms mailed to you electronically by sending a letter to the foregoing address with your electronic mail address and a request for these Terms
+Website Terms of UseSelf-Serve Subscription AgreementService-Specific TermsPrivacy PolicyCookie PolicyTrust & SafetyTransparency ReportDomain Registration AgreementModern Slavery Act StatementThird Party Code of ConductCandidate Privacy PolicyIf you have questions about these terms or anything else about Cloudflare, please don't hesitate to contact us:+1 (650) 319-8930Cloudflare, Inc
+101 Townsend St,San Francisco, CA 94107USAGetting StartedResourcesSolutionsCommunitySupportCompany"," ELIGIBILITYBy agreeing to these Terms, you represent and warrant to us: (i) that you are at least eighteen (18) years of age; (ii) that you have not previously been suspended or removed from the Websites and Online Services and (iii) that your use of the Websites and Online Services is in compliance with any and all applicable laws and regulations
+ You will retain ownership of your Content, however, any use of your Content by Cloudflare may be without any compensation paid to you
+ If you are granted an abuse API token, you agree not to disclose or provide the abuse API token to any person or entity other than to yourself or your organization’s employees, or use the API or API token in any manner prohibited under Section 7 below
+ We will have no liability whatsoever on account of any change to the Websites and/or Online Services or any suspension or termination of your access to or use of the Websites and/or Online Services
+ You may not use the Websites or Online Services in any manner that could damage, disable, overburden, disrupt or impair any Cloudflare servers or APIs, or any networks connected to any Cloudflare server or APIs, or that could interfere with any other party's use and enjoyment of any Websites or Online Services
+ You may not transmit any viruses, worms, defects, Trojan horses, or any items of a destructive nature through your use of Websites or Online Services
+ You may not exceed or circumvent, or try to exceed or circumvent, limitations on the Websites or Online Services, including on any API calls, or otherwise use the Websites or Online Services in a manner that violates any Cloudflare documentation or user manuals
+ You may not to use the Websites or Online Services in any way that violates any applicable federal, state, local, or international law or regulation (including, without limitation, any laws regarding the export of data or software to and from the US or other countries)
+Cloudflare retains the right (but not the obligation) to block content from its Distributed Web Gateway that Cloudflare determines (in its sole discretion) to be illegal, harmful, or in violation of these Terms
+ For these purposes, illegal or harmful content includes but is not limited to: (a) content containing, promoting, or facilitating child sexual abuse material or human trafficking; (b) content that infringes on another person’s intellectual property rights or is otherwise unlawful; (c) content that discloses sensitive personal information, incites or exploits violence, or is intended to defraud the public; and (d) content that seeks to distribute malware, facilitate phishing, or otherwise constitutes technical abuseINDEMNITYYou agree that you will be responsible for your use of the Websites and Online Services, and you agree to defend, indemnify, and hold harmless Cloudflare and its officers, directors, employees, consultants, affiliates, subsidiaries and agents (collectively, the ""Cloudflare Entities"") from and against any and all claims, liabilities, damages, losses, and expenses, including reasonable attorneys' fees and costs, arising out of or in any way connected with (i) your access to, use of, or alleged use of the Websites and Online Services; (ii) your violation of these Terms or any representation, warranty, or agreements referenced herein, or any applicable law or regulation; (iii) your violation of any third-party right, including without limitation any intellectual property right, publicity, confidentiality, property or privacy right; or (iv) any disputes or issues between you and any third party
+ We reserve the right, at our own expense, to assume the exclusive defense and control of any matter otherwise subject to indemnification by you (and without limiting your indemnification obligations with respect to such matter), and in such case, you agree to cooperate with our defense of such claim
+ THE CLOUDFLARE ENTITIES MAKE NO CLAIMS OR PROMISES ABOUT THE QUALITY, ACCURACY, OR RELIABILITY OF THE WEBSITES AND ONLINE SERVICES AND EXPRESSLY DISCLAIM ALL WARRANTIES, WHETHER EXPRESS OR IMPLIED, INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT
+LIMITATION OF LIABILITYIN NO EVENT WILL THE CLOUDFLARE ENTITIES BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING OUT OF OR RELATING TO YOUR ACCESS TO OR USE OF, OR YOUR INABILITY TO ACCESS OR USE, THE WEBSITES AND ONLINE SERVICES OR ANY MATERIALS OR CONTENT ON THE WEBSITES AND ONLINE SERVICES, WHETHER BASED ON WARRANTY, CONTRACT, TORT (INCLUDING NEGLIGENCE), STATUTE, OR ANY OTHER LEGAL THEORY, WHETHER OR NOT THE CLOUDFLARE ENTITIES HAVE BEEN INFORMED OF THE POSSIBILITY OF SUCH DAMAGE
+Upon termination of these Terms, any provision that by its nature or express terms should survive will survive such termination or expiration, including, but not limited to, Section 2 and Sections 7 through 13",,"Cloudflare, ""us"" or ""we"" refers to Cloudflare, Inc. and its affiliates. ""Online Services"" means Cloudflare’s products and services that are publicly available without a subscription or a Cloudflare account. if there is a conflict between these Terms and additional terms applicable to a given Website or Online Service, the additional terms will control.","Cloudflare reserves the right (but not the obligation) to block content from its Distributed Web Gateway that it determines to be illegal, harmful, or in violation of these Terms. you may not transmit any viruses, worms, defects, Trojan horses, or any items of a destructive nature through your use of the Websites and/or Online Services.",
+Notepad++,"
+            Your browser does not seem to support JavaScript
+ As a result, your viewing experience will be diminished, and you have been placed in read-only mode
+
+        
+            Please download a browser that supports JavaScript, or enable it if it's disabled (i
+e
+ NoScript)
+
+        Hi all - wondering if you can assist - are there any terms and conditions for Notepad++ looking for an indemnity clause?@Hollie-Kanesee license text file which is in the installation directory
+Cheers
+ClaudiaHi Claudia, thank you so much for your reply
+ I am on https://notepad-plus-plus
+org  and cannot locate the installation directory
+ Can you tell me where about’s this is located - so sorry if I am blind as a bat!Holly,
+Claudia was referring to the directory NPP gets installed to when you download and install it
+ The license file is basically the text from the GNU GENERAL PUBLIC LICENSE, Version 2, June 1991
+I think the default directory for License (no file extension) is C:\Program Files\Notepad++
+HTH@cipher-1024thx for helping out
+@Hollie-Kane
+if you haven’t installed it yet and want to know its content, it can be reviewed
+here 
+Cheers
+ClaudiaLooks like your connection to Community was lost, please wait while we try to reconnect
+",,,"your browser does not seem to support JavaScript. your viewing experience will be diminished, and you have been placed in read-only mode. Please download a browser that supports JavaScript, or enable it if it's disabled (i e NoScript) Please wait while we try to reconnect your connection to Community. if you haven’t installed it yet, please wait while we try to reconnect.",,
+Microsoft.NET,"Published: 30 July 2023Effective: 30 September 2023These terms (""Terms"") cover the use of those Microsoft consumer products, websites and services listed at the end of these Terms here (https://www
+microsoft
+com/servicesagreement#serviceslist) (the ""Services"")
+ You accept these Terms by creating a Microsoft account, through your use of the Services, or by continuing to use the Services after being notified of a change to these Terms
+1
+ Your Privacy
+ Your privacy is important to us
+ Please read the Microsoft Privacy Statement (https://go
+microsoft
+com/fwlink/?LinkId=521839) (the “Privacy Statement”) as it describes the types of data we collect from you and your devices (“Data”), how we use your Data and the legal bases we have to process your Data
+ The Privacy Statement also describes how Microsoft uses your content, which is: your communications with others; postings submitted by you to Microsoft via the Services; and the files, photos, documents, audio, digital works, livestreams and videos that you upload, store, broadcast, create, generate or share through the Services, or inputs that you submit in order to generate content “Your Content”)
+ Where processing is based on consent and to the extent permitted by law, by agreeing to these Terms, you consent to Microsoft’s collection, use and disclosure of Your Content and Data as described in the Privacy Statement
+ In some cases, we will provide separate notice and request your consent as referenced in the Privacy Statement
+2
+ Your Content
+ Many of our Services allow you to create, store or share Your Content or receive material from others
+ We don’t claim ownership of Your Content
+ Your Content remains yours, and you are responsible for it
+3
+ Code of Conduct
+ You are accountable for your conduct and content when using the Services
+4
+ Using the Services & Support
+5
+ Using Third-Party Apps and Services
+ The Services may allow you to access or acquire products, services, websites, links, content, material, games, skills, integrations, bots or applications from independent third parties (companies or people who aren’t Microsoft) (""Third-Party Apps and Services"")
+ Many of our Services also help you find, make requests to, or interact with Third-Party Apps and Services or allow you to share Your Content or Data, and you understand that by using our Services you are directing them to make Third-Party Apps and Services available to you
+ The Third-Party Apps and Services may also allow you to store Your Content or Data with the publisher, provider or operator of the Third-Party Apps and Services
+ The Third-Party Apps and Services may present you with a privacy policy or require you to accept their terms before you can install or use the Third-Party App or Service
+ See section 13
+b for additional terms for applications acquired through certain Stores owned or operated by Microsoft or its affiliates (including, but not limited to, the Office Store, the Microsoft Store on Xbox and the Microsoft Store on Windows
+ You should review the third-party terms and privacy policies before acquiring, using, requesting, or linking your Microsoft Account to any Third-Party Apps and Services
+ Any third-party terms do not modify these Terms
+ Microsoft does not license any intellectual property to you as part of any Third-Party Apps and Services
+ Microsoft is not responsible or liable to you or others for information or services provided by any Third-Party Apps and Services
+6
+ Service Availability
+7
+ Updates to the Services or Software and Changes to These Terms
+8
+ Software Licence
+ Unless accompanied by a separate Microsoft licence agreement (for example, if you are using a Microsoft application that is included with and a part of Windows, then the Microsoft Software Licence Terms for the Windows Operating System govern such software), any software provided by us to you as part of the Services is subject to these Terms
+ Applications acquired through certain Stores owned or operated by Microsoft or its affiliates (including, but not limited to the Office Store, Microsoft Store on Windows and Microsoft Store on Xbox) are subject to section 13
+b
+i below
+9
+ Payment Terms
+ If you purchase a Service, then these payment terms apply to your purchase and you agree to them
+10
+ Contracting Entity, Choice of Law & Location for Resolving Disputes
+ For your use of free and paid consumer Skype-branded Services, if you live outside Europe, the Middle East and Africa, you are contracting with, and all references to ""Microsoft"" in these Terms mean, Skype Communications S
+à
+r
+l, 23 – 29 Rives de Clausen, L-2165 Luxembourg
+ For free or paid consumer Skype-branded Services, if you live outside of Europe, the Middle East and Africa, Luxembourg law governs the interpretation of these Terms and claims for their breach, regardless of conflict of law principles
+ The laws of the province or country where you live govern all other claims (including consumer protection, unfair competition and tort claims)
+ If you live outside of Europe, the Middle East and Africa, you and we irrevocably agree to the exclusive jurisdiction and venue of the Luxembourg courts for all disputes arising out of or relating to the consumer Skype-branded Services
+ If so, the choice of law and forum provisions in section 10 apply as much as your local consumer laws allow
+11
+You are also entitled to choose a refund or replacement for major failures with goods
+ If this is not done you are entitled to a refund for the goods and to cancel the contract for the service and obtain a refund of any unused portion
+ You are also entitled to be compensated for any other reasonably foreseeable loss or damage from a failure in the goods or service
+12
+ Limitation of Liability
+13
+ Service-Specific Terms
+ The terms before and after section 13 apply generally to all Services
+ This section contains service-specific terms that are in addition to the general terms
+ These service-specific terms govern if there are any conflicts with the general terms
+14
+ Miscellaneous
+ This section, and sections 1, 9 (for amounts incurred before the end of these Terms), 10, 11, 12, 15, 17 and those that by their terms apply after these Terms end will survive any termination or cancellation of these Terms
+ You may not assign these Terms or transfer any rights to use the Services
+ This is the entire agreement between you and Microsoft for your use of the Services
+ It supersedes any prior agreements between you and Microsoft regarding your use of the Services
+ In entering into these Terms, you have not relied on any statement, representation, warranty, understanding, undertaking, promise or assurance other than as expressly set out in these Terms
+ All parts of these Terms apply to the maximum extent permitted by relevant law
+ If a court or arbitrator holds that we can't enforce a part of these Terms as written, we may replace those terms with similar terms to the extent enforceable under the relevant law, but the rest of these Terms won't change
+ These Terms are solely for your and our benefit
+ These Terms are not for the benefit of any other person, except for Microsoft’s successors and assigns
+ Section headings are for reference only and have no legal effect
+15
+ Claims Must Be Filed Within One Year
+ Any claim related to these Terms or the Services must be filed in court (or arbitration if section 10
+d applies) within one year of the date you could first file the claim, unless your local law requires a longer time to file claims
+ If not filed within that time, then it's permanently barred
+16
+ Export Laws
+ You must comply with all domestic and international export laws and regulations that apply to the software and/or Services, which include restrictions on destinations, end users and end use
+ For further information on geographic and export restrictions, visit https://www
+microsoft
+com/exporting
+17
+ Reservation of Rights and Feedback
+ Except as expressly provided under these Terms, Microsoft does not grant you a licence or any other rights of any type under any patents, know-how, copyrights, trade secrets, trademarks or other intellectual property owned or controlled by Microsoft or any related entity, including but not limited to any name, trade dress, logo or equivalents
+ If you give to Microsoft any idea, proposal, suggestion or feedback, including without limitation ideas for new products, technologies, promotions, product names, product feedback and product improvements (""Feedback""), you give to Microsoft, without charge, royalties or other obligation to you, the right to make, have made, create derivative works, use, share and commercialise your Feedback in any way and for any purpose
+ You will not give Feedback that is subject to a licence that requires Microsoft to license its software, technologies or documentation to any third party because Microsoft includes your Feedback in them
+Notices and procedure for making claims of intellectual property infringement
+ If you wish to send a notice of intellectual property infringement, including claims of copyright infringement, please use our procedures for submitting Notices of Infringement (https://www
+microsoft
+com/en-us/legal/intellectualproperty/infringement), which procedures form part of these Terms
+ ONLY ENQUIRIES RELEVANT TO THIS PROCEDURE WILL RECEIVE A RESPONSE
+Microsoft uses the processes set out in Title 17, United States Code, Section 512, and, where applicable, Chapter III of Regulation (EU) 2022/2065, to respond to notices of copyright infringement
+ In appropriate circumstances, Microsoft may also disable or terminate accounts of users of Microsoft services who may be repeat infringers
+ Furthermore, in appropriate circumstances, Microsoft may suspend processing notices by individuals or entities that frequently submit unfounded notices
+ A further explanation of the applicable procedures for a given Service, including possible redress for decisions taken by Microsoft as part of these procedures, may be found at Notices of Infringement (https://www
+microsoft
+com/legal/intellectualproperty/infringement)
+Notices and procedures regarding intellectual property concerns in advertising
+ Please review our Intellectual Property Guidelines (https://go
+microsoft
+com/fwlink/?LinkId=243207) regarding intellectual property concerns on our advertising network
+Copyright and trademark notices
+ The Services are copyright © Microsoft Corporation and/or its suppliers, One Microsoft Way, Redmond, WA 98052, USA
+ All rights reserved
+ The Terms incorporate Microsoft Trademark & Brand Guidelines (https://www
+microsoft
+com/en-us/legal/intellectualproperty/trademarks/usage/general
+aspx) (as amended from time to time)
+ Microsoft and the names, logos and icons of all Microsoft products, software and services may be either unregistered or registered trademarks of the Microsoft group of companies in the United States and/or other jurisdictions
+ The following is a non-exhaustive list of Microsoft’s trademarks at https://www
+microsoft
+com/en-us/legal/intellectualproperty/trademarks/EN-US
+aspx
+ The names of actual companies and products may be the trademarks of their respective owners
+ Any rights not expressly granted in these Terms are reserved
+ Certain software used in certain Microsoft website servers is based in part on the work of the Independent JPEG Group
+ Copyright © 1991-1996 Thomas G
+ Lane
+ All rights reserved
+ “gnuplot” software used in certain Microsoft website servers is copyright © 1986‑1993 Thomas Williams, Colin Kelley
+ All rights reserved
+Medical notice
+ Microsoft does not provide medical or any other healthcare advice, diagnosis or treatment
+ Always seek the advice of your physician or other qualified healthcare provider with any questions you may have regarding a medical condition, diet, fitness or wellness programme
+ Never disregard professional medical advice or delay in seeking it because of information that you accessed on or through the Services
+Stock quotes and index data (including index values)
+ Financial information provided through the Services is for your personal, non-commercial use only
+Financial notice
+ Microsoft isn’t a broker/dealer or registered investment advisor under United States federal securities law or securities laws of other jurisdictions and doesn’t advise individuals as to the advisability of investing in, purchasing or selling securities or other financial products or services
+ Nothing contained in the Services is an offer or solicitation to buy or sell any security
+ Neither Microsoft nor its licensors of stock quotes or index data endorse or recommend any particular financial products or services
+ Nothing in the Services is intended to be professional advice, including without limitation, investment or tax advice
+Notice about the H
+264/AVC and VC-1 Video Standards
+ The software may include H
+264/AVC and/or VC-1 codec technology that is licensed by MPEG LA, L
+L
+C
+ This technology is a format for data compression of video information
+ MPEG LA, L
+L
+C
+ requires this notice:THIS PRODUCT IS LICENSED UNDER THE H
+264/AVC AND THE VC-1 PATENT PORTFOLIO LICENCES FOR THE PERSONAL AND NON-COMMERCIAL USE OF A CONSUMER TO (A) ENCODE VIDEO IN COMPLIANCE WITH THE STANDARDS (“VIDEO STANDARDS”) AND/OR (B) DECODE H
+264/AVC, MPEG-4 VISUAL AND VC-1 VIDEO THAT WAS ENCODED BY A CONSUMER ENGAGED IN A PERSONAL AND NON-COMMERCIAL ACTIVITY AND/OR WAS OBTAINED FROM A VIDEO PROVIDER LICENSED TO PROVIDE SUCH VIDEO
+ NO LICENCE IS GRANTED OR SHALL BE IMPLIED FOR ANY OTHER USE
+ ADDITIONAL INFORMATION MAY BE OBTAINED FROM MPEG LA, L
+L
+C
+ SEE THE MPEG LA WEBSITE (https://www
+mpegla
+com)
+Notice about the H
+265/HEVC Video Standard
+ The software may include H
+265/HEVC coding technology
+ Access Advance LLC requires this notice:IF INCLUDED, THE H
+265/HEVC TECHNOLOGY IN THIS SOFTWARE IS COVERED BY ONE OR MORE CLAIMS OF THE HEVC PATENTS LISTED AT: PATENTLIST
+ACCESSADVANCE
+COM
+ DEPENDING ON HOW YOU OBTAINED THE SOFTWARE, THIS PRODUCT MAY BE LICENSED UNDER THE HEVC ADVANCE PATENT PORTFOLIO
+If this software is installed on a Microsoft device, additional licensing information can be found at: aka
+ms/HEVCVirtualPatentMarking
+STANDARD APPLICATION LICENCE TERMSMICROSOFT STORE, MICROSOFT STORE ON WINDOWS AND MICROSOFT STORE ON XBOXThese licence terms are an agreement between you and the application publisher
+ Please read them
+ They apply to the software applications you download from the Microsoft Store, the Microsoft Store on Windows or the Microsoft Store on Xbox (each of which is referred to in these licence terms as the ""Store""), including any updates or supplements for the application, unless the application comes with separate terms, in which case those terms apply
+BY DOWNLOADING OR USING THE APPLICATION, OR ATTEMPTING TO DO ANY OF THESE, YOU ACCEPT THESE TERMS
+ IF YOU DO NOT ACCEPT THEM, YOU HAVE NO RIGHT TO AND MUST NOT DOWNLOAD OR USE THE APPLICATION
+The application publisher means the entity licensing the application to you, as identified in the Store
+If you comply with these licence terms, you have the rights below
+"," You agree to assume all risk and liability arising from your use of these Third-Party Apps and Services and that Microsoft is not responsible for any issues arising out of your use of them
+ For all other Services, the entity with which you are contracting, the governing law and the location to resolve disputes appear below:Your local consumer laws may require some local laws to govern or give you the right to resolve disputes in another forum despite these Terms
+ Warranties
+ If a failure with the goods or a service does not amount to a major failure, you are entitled to have the failure rectified in a reasonable time
+ To the extent permitted by applicable law, we may assign these Terms, subcontract our obligations under these Terms or sublicense our rights under these Terms, in whole or in part, at any time without notice to you
+ Microsoft respects the intellectual property rights of third parties
+ You may not use any of the finance data or marks of any third-party licensor in connection with the issuance, creation, sponsorship, trading, marketing or promotion of any financial instruments or investment products (for example, indices, derivatives, structured products, investment funds, exchange-traded funds, investment portfolios etc
+, where the price, return and/or performance of the instrument or investment product is based on, related to or intended to track any of the finance data) without a separate written agreement with the third-party licensor
+This limitation applies to:It also applies even if:The following products, apps and services are covered by the Microsoft Services Agreement, but may not be available in your market","","the Services may allow you to access or acquire products, services, websites, links, content, material, games, skills, integrations, bots or applications from independent third parties (companies or people who aren’t Microsoft) many of our Services also help you find, make requests to, or interact with Third-Party Apps and Services.","Microsoft may assign these Terms, subcontract our obligations under these Terms or sublicense our rights under these Terms, in whole or in part, at any time without notice to you. you may not use any of the finance data or marks of any third-party licensor in connection with the issuance, creation, sponsorship, trading, marketing or promotion of any financial instruments or investment products.",""

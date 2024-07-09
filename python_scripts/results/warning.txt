@@ -1,9 +1,9 @@
-
-
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE
-
-
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED
+ You agree to assume all risk and liability arising from your use of these Third-Party Apps and Services and that Microsoft is not responsible for any issues arising out of your use of them
+ For all other Services, the entity with which you are contracting, the governing law and the location to resolve disputes appear below:Your local consumer laws may require some local laws to govern or give you the right to resolve disputes in another forum despite these Terms
+ Warranties
+ If a failure with the goods or a service does not amount to a major failure, you are entitled to have the failure rectified in a reasonable time
+ To the extent permitted by applicable law, we may assign these Terms, subcontract our obligations under these Terms or sublicense our rights under these Terms, in whole or in part, at any time without notice to you
+ Microsoft respects the intellectual property rights of third parties
+ You may not use any of the finance data or marks of any third-party licensor in connection with the issuance, creation, sponsorship, trading, marketing or promotion of any financial instruments or investment products (for example, indices, derivatives, structured products, investment funds, exchange-traded funds, investment portfolios etc
+, where the price, return and/or performance of the instrument or investment product is based on, related to or intended to track any of the finance data) without a separate written agreement with the third-party licensor
+This limitation applies to:It also applies even if:The following products, apps and services are covered by the Microsoft Services Agreement, but may not be available in your market
