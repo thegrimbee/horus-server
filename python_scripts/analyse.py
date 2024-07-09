@@ -19,19 +19,7 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 #Using torch
 import torch
 from transformers import AutoTokenizer, T5ForConditionalGeneration
-
-minilm_path = os.path.join(os.path.dirname(__file__), '../ai_models/minilm')
-class SentenceTransformerFeatures(BaseEstimator, TransformerMixin):
-    def __init__(self, model_name='sentence-transformers/all-MiniLM-L6-v2'):
-        self.model = SentenceTransformer(minilm_path)
-        self.model_name = model_name
-    
-    def fit(self, X, y=None):
-        return self
-    
-    def transform(self, X):
-        embeddings = self.model.encode(X if type(X) == list else X.tolist(), convert_to_tensor=False)
-        return np.array(embeddings)
+from ai import SentenceTransformerFeatures, POSTagFeatures, NERFeatures, KeywordFeatures, DependencyFeatures, SentimentFeatures
     
 def summarize(text):
     if text == '':
