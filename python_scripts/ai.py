@@ -192,6 +192,8 @@ if __name__ == '__main__':
     X_test = val_data['Sentence']
     Y_test = val_data['Harm Level']
 
+    length = len(X_train)
+
     pipeline = ImbPipeline([
         ('features', FeatureUnion([
             # ('tfidf', TfidfVectorizer(ngram_range=(1, 2), stop_words='english', max_df=0.5, min_df=5)),
@@ -256,7 +258,7 @@ if __name__ == '__main__':
     grid_search.fit(X_train, Y_train)
     model = grid_search.best_estimator_
     print(grid_search.best_params_)
-    print(grid_search.best_score_)
+    print(grid_search.best_score_ / length)
     # print('testing1')
     # pipeline.fit(X_train, Y_train)
     # model = pipeline

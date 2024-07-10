@@ -56,7 +56,6 @@ pyasn1_modules==0.4.0
 pycparser==2.22
 pydantic==2.8.2
 pydantic_core==2.20.1
-Pygments==2.18.0
 pyparsing==3.1.2
 PySocks==1.7.1
 python-dateutil==2.9.0.post0
@@ -70,7 +69,7 @@ rich==13.7.1
 rsa==4.9
 safetensors==0.4.3
 scikit-learn==1.5.0
-scipy==1.13.1
+scipy==1.11.0
 selenium==4.22.0
 sentence-transformers==3.0.1
 shellingham==1.5.4
@@ -89,7 +88,7 @@ textblob==0.18.0.post0
 thinc==8.2.5
 threadpoolctl==3.5.0
 tokenizers==0.19.1
-torch @ https://download.pytorch.org/whl/cpu/torch-2.3.1%2Bcpu-cp39-cp39-linux_x86_64.whl
+torch @ https://download.pytorch.org/whl/cpu/torch-2.3.1%2Bcpu-cp39-cp39-win_amd64.whl#sha256=df68668056e62c0332e03f43d9da5d4278b39df1ba58d30ec20d34242070955d
 tqdm==4.66.4
 transformers==4.41.2
 trio==0.26.0
