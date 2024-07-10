@@ -869,3 +869,283 @@ o
  For legal entities, “Product Holder” includes any entity which controls, is controlled by, or is under common control with Product Holder
  For the purposes of this definition, “control” means (i) the power, directly or indirectly, to direct or manage such entity, whether by contract or otherwise, or (ii) ownership of fifty percent (50%) or more of the outstanding shares or beneficial ownership of such entity
 ",,,"""JetBrains"" or ""we"" means JetBrains s r o, having its principal place of business at Na Hrebenech II 1718/8, Prague, 14000, Czech Republic. ""Product Holder"" means the sole proprietor or legal entity specified in the Subscription Confirmation. ""control"" means ownership of fifty percent or more of the outstanding shares or beneficial ownership of such entity.",,
+Examsoft,"Last Updated: July 1, 2024These Service Terms (“Service Terms”) govern your use of the applicable Services
+ All capitalized terms used but not defined in these Service Terms have the meanings ascribed to them in the Turnitin Master Registration Agreement, available at www
+turnitin
+com/mra or such other applicable agreement between you and us governing your use of the Services (the “Agreement”)
+ For purposes of these Service Terms, “you” and “your” refers to Customers and Authorized Users of the Services, as applicable, and “Your Content” includes any “Customer Content
+” As between these Service Terms and the Master Registration Agreement, the terms of the Master Registration Agreement will take precedence except for the service-specific terms provided in Section 3 (Turnitin Specific Service Terms) and Section 4 (ExamSoft Specific Service Terms) and any SLAs attached as exhibits hereto
+1
+ Universal Service Terms (Applicable to All Services)
+1
+1 Software Transfer Restrictions
+ You agree not to transfer any software (including related Documentation) obtained from us or a third-party licensor in connection with the Services outside of the Services, unless you have received prior express written authorization from us to do so
+ Any unauthorized transfer of software may result in termination of your access to the Services
+1
+2 Compliance with Documentation
+ You agree to comply with all current Documentation applicable to the Services, including applicable user, administrator, and developer guidance posted on the Site, available at https://www
+turnitin
+com/ and https://examsoft
+com/product-specifications and any successor or related locations designated by us), or as otherwise made available to you in hard copy or digital format by Turnitin for your use of the Services
+ It is your responsibility to periodically review the Site for any changes or updates to the Documentation
+1
+3 Cooperation
+ You will provide information or other materials related to Your Content as reasonably requested by us to verify your compliance with the Agreement
+ You agree to cooperate with us to identify the source of any issues with the Services that we reasonably believe may be attributable to your Content or any Authorized User materials under your control
+1
+4 Prohibited Content
+ In connection with your use of the Services, you are responsible for maintaining valid licenses and adhering to the license terms of any software you use
+turnitin
+com/acceptable-use-policy (“Prohibited Content”), we will notify you of the Prohibited Content and may request that you remove such content from the Services or disable access to it
+ If you do not remove or disable access to the Prohibited Content within two business days of our notice, then we may remove or disable access to the Prohibited Content or suspend the Services to the extent we are unable to remove or disable access to the Prohibited Content
+ Notwithstanding the foregoing, we may remove or disable access to any Prohibited Content without prior notice in connection with illegal content, content that may disrupt or threaten the Services, or to comply with Applicable Law or any judicial, regulatory, or other governmental order or request
+ If we remove Your Content without prior notice, then we will use commercially reasonable efforts to provide prompt notice to you of the removal unless prohibited by Applicable Law
+ Repeated violations of this Section 1
+1
+5 Accuracy of Information
+ You are solely responsible for ensuring the accuracy, truthfulness, and completeness of all information that you provide to us via the Site, including but not limited to information provided during registration for the Services, as well as any Student Personal Data that you provide to us in connection with your use of the Services
+1
+6 Maintenance
+ From time to time, we may apply Updates or other maintenance to the Services and Turnitin Content (“Maintenance”)
+ We will use commercially reasonable efforts to provide you with advance notice of any scheduled Maintenance that may affect your access to the Services
+ You (i) agree to use reasonable efforts to comply with any Maintenance requirements of which we notify you, and (ii) acknowledge that the Services may be temporarily unavailable during Maintenance periods
+1
+6
+1 Availability
+ We will use commercially reasonable efforts to make the Services available 24 hours per day, 7 days per week, except for:1
+6
+1
+1 scheduled Maintenance, support, improvements and Updates; and1
+6
+1
+2 unscheduled Maintenance
+1
+6
+2 Scheduled Maintenance
+ We endeavor to schedule and perform scheduled Maintenance between the hours of 11:00 PM – 4:00 AM U
+S
+ Eastern Standard Time
+ Where possible, we will provide sufficient system redundancy to ensure that the Services remain available during any period of scheduled maintenance
+1
+6
+3 Unscheduled Maintenance
+ In the event of an emergency that requires Maintenance or other unavailability outside of the scheduled maintenance window, we will use our best efforts to notify you as soon as reasonably practicable
+1
+6
+4 Incident Notification
+ We endeavor to notify you of any extended outage in a reasonable and timely manner
+ Once an outage is corrected, you will be notified as soon as reasonably practicable
+1
+6
+5 Service Level Reporting
+ We utilize internal tools and monitors to determine service availability
+1
+6
+6 Customer Support
+ We will provide incident support through our help desk
+ Help desk support includes general technical information and assistance with problem determination, isolation, verification, and resolution 24 hours per day, 7 days per week excluding United States federal holidays
+ The help desk may be reached via toll-free telephone at +1 866-816-5046, chat message, or electronic mail at Tiisupport@turnitin
+com
+1
+7 Confidential Information
+ In the absence of (i) a Turnitin Confidential Information provision in your Agreement with us, and/or (ii) an effective non-disclosure agreement between you and us, then you agree not to disclose Turnitin Confidential Information (as defined in the Turnitin Master Registration Agreement), except as required by Applicable Law
+1
+8 Turnitin Contracting Party
+ Only the applicable Turnitin Contracting Party (as defined in the Turnitin Master Registration Agreement) will have obligations with respect to each Turnitin account, and no other Turnitin Contracting Party has any obligation with respect to such account
+ Invoices for each account will reflect the Turnitin Contracting Party that is responsible for that account during the applicable billing period
+ If the Turnitin Contracting Party responsible for your account changes and you had previously made an up-front payment for any Services to that Turnitin Contracting Party, then that Turnitin Contracting Party may remain the Turnitin Contracting Party for the applicable account only with respect to the Services related to such up-front payment
+1
+9 Associated Services
+ When you use certain Services, you may be able to use or may be required to use one or more other Services (each, an “Associated Service”), and when you use an Associated Service, you are subject to the terms and fees that apply to that Associated Service
+1
+10 Service Credits
+2
+ Early Access Services
+2
+1 General Information
+ This Section 2 (Early Access Services) describes the additional terms and conditions under which you may (i) access and use certain features, technologies, and services made available to you by Turnitin that are not yet generally available to the public, including, but not limited to, any products, services, software, or features labeled “beta”, “preview”, “pre-release”, “early access,” “developmental,” or “experimental”, and any related Turnitin Content (each, an “Early Access Service(s)”); or (ii) access and use Services and any related Turnitin Content available in Turnitin regions that are not generally available to the public, including, but not limited to, any Turnitin regions identified by Turnitin as “beta”, “preview”, “pre-release”, “early access,” “developmental,” or “experimental” (each, an “Early Access Region”)
+2
+2 Compliance with Early Access Terms
+ You must comply with all terms related to any Early Access Service or Early Access Region as posted on the Site or otherwise made available to you, including in an applicable Order Form
+ SLAs will not apply to Early Access Services or Early Access Regions
+2
+3 Test Observations
+ You may provide Turnitin with information relating to your access, use, testing, or evaluation of Early Access Services or Early Access Regions, including observations or information regarding the performance, features, and functionality of Early Access Services or Early Access Regions (“Test Observations”)
+ Turnitin will own and may use and evaluate all Test Observations for its own purposes
+ You will not use any Test Observations except for your internal evaluation purposes of any Early Access Service or Early Access Region
+2
+4 Feedback and Testimonials
+ As a condition of receiving an Early Access Service and upon Turnitin’s prior written request in an executed Order Form, Turnitin may require you to perform utilization and testing of Early Access Services in real-world environments and provide your Test Observations and Feedback to Turnitin on the results of such utilization and testing on a periodic basis (cadence to be established by mutual agreement)
+ Such Test Observations and Feedback may include, as applicable, information including, without limitation, the design, use, application, operation, and speed of the Early Access Service
+ After completion of the Early Access Service term, Turnitin may require you to provide—on Turnitin’s behalf—testimonials concerning the Services either in print, by quotation, recorded, or video format
+ In addition, and only at Turnitin’s prior written request and expense, Turnitin may require that you participate with us in presenting the Early Access Services in a meeting or conference environment
+ You acknowledge that Turnitin may modify, adapt, and use any of the foregoing testimonials in marketing and promotional purposes, and you agree to cooperate with Turnitin in mutually agreed additional use cases (if agreed in writing between you and us)
+2
+5 Confidentiality of Early Access Services
+ Test Observations and Feedback concerning an Early Access Service or Early Access Region, and any other information about or involving (including the existence of) any Early Access Service or Early Access Region are considered Turnitin Confidential Information and are subject to the confidentiality provisions in the Agreement
+2
+6 Termination of Early Access Services
+ Your access to and use of each Early Access Service and Early Access Region will automatically terminate upon the release of a generally available version of the applicable Early Access Service or Early Access Region or upon notice of termination by Turnitin, whichever occurs first
+ Notwithstanding anything to the contrary in the Agreement or these Service Terms, after suspension or termination of your access to or use of any Early Access Service or Early Access Region for any reason, (a) you will not have any further right to access or use the applicable Early Access Service or Early Access Region, and (b) Your Content used in the applicable Early Access Service or Early Access Region may be deleted or made inaccessible to you
+2
+7 Testing, Benchmarking, and Other Initiatives
+ Testing, benchmarking and other performance-related development initiatives may be ongoing during the period in which the Early Access Services are made available to you
+ By accepting and using the Early Access Services, you acknowledge that the Early Access Services may not be fully-functioning or functioning as designed and further acknowledge that you may experience issues with regard to Early Access Service availability, reliability, and stability
+2
+ DURING THE EARLY ACCESS SERVICE TERM, BECAUSE TURNITIN IS SUPPLYING THE EARLY ACCESS SERVICE TO YOU ON A TEST BASIS, AND NOTWITHSTANDING ANY OTHER PRODUCT OR SERVICE WARRANTY PROVIDED IN THE AGREEMENT, TURNITIN IS MAKING THE EARLY ACCESS SERVICE AVAILABLE TO YOU ‘‘AS IS’’ FOR EVALUATION ONLY, AND ACCORDINGLY MAKES NO WARRANTIES WHATSOEVER, EXPRESS OR IMPLIED, WHETHER ORAL OR WRITTEN, WITH RESPECT TO THE SOFTWARE, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OF MERCHANTABILITY, OF FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, OR ARISING FROM USAGE OF TRADE OR COURSE OF DEALING OR PERFORMANCE
+ YOU AGREE NOT MAKE ANY CLAIM OR FILE ANY SUIT AGAINST TURNITIN, WHETHER IN CONTRACT, TORT, STRICT LIABILITY OR OTHERWISE REGARDING ANY ASPECT OF THE PERFORMANCE OR NON-PERFORMANCE OF THE EARLY ACCESS SERVICE, AND YOU HEREBY IRREVOCABLY WAIVE ANY RIGHTS, IF ANY, WHICH YOU MAY HAVE TO DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING FROM THE PERFORMANCE OR NON-PERFORMANCE OF THE EARLY ACCESS SERVICE, EVEN IF TURNITIN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES
+ ANY DAMAGES AWARDED AGAINST TURNITIN, WHETHER ARISING IN CONTRACT, TORT OR STRICT LIABILITY SHALL NOT EXCEED AN AMOUNT GREATER THAN $100
+00
+3
+ Turnitin Specific Service Terms
+3
+1 Turnitin Feedback Studio with Originality/Similarity/SimCheck/OC and OC+ Services
+3
+1
+1 Turnitin agrees to, with respect to the Turnitin Feedback Studio, Turnitin Similarity, SimCheck, Turnitin Feedback Studio with Originality, OC and OC+ Services and their components, enable Instructors to create Instructor accounts and, enable Students to create Student accounts in the Service
+3
+1
+2 With respect to your and your Authorized Users’ use of Turnitin Similarity, SimCheck, and Turnitin Feedback Studio with Originality Services and their components, Turnitin strongly recommends that You will:3
+1
+2
+1 Not make statements to Students that You are using the Turnitin Feedback Studio Service in a given class when such class is not actually using the Turnitin Feedback Studio Service
+ Further, even within a particular class using the Turnitin Feedback Studio Service, for purposes of fairness and equal application, Turnitin strongly recommends requiring Student submission of all Student Papers rather than submission by Instructors only of Student Papers singled out by Instructor);3
+1
+2
+2 In the course syllabus of each course making use of the Service, carry a notice substantially similar to the effect of the following: “By taking this course, student agrees that all submitted papers are subject to verification and review third party verification by Turnitin (including through use of artificial intelligence or similar detection tools) for textual similarity review for the detection of plagiarism, including writing that is likely generated by AI
+ Use of the Turnitin products and services is subject to the Acceptable Use Policy posted on www
+turnitin
+com/acceptable-use-policy If use of the Service is instituted after distribution of the syllabus, then You will consider Turnitin’s strong recommendation to require each Instructor to provide Students with equivalent written notice of use of the Turnitin services in each instance; and3
+1
+2
+3 Ensure that all Students enrolling at your institution receive clear notice in their Student handbook (or comparable communication) at the time of enrollment that you use the Turnitin Services
+3
+2 iThenticate Service
+ With respect to Your use of the iThenticate Service, the license granted in the Agreement is restricted as follows: if Your institution becomes known as a service through which Students, researchers or other individuals can obtain papers or portions of papers for submission as their own original work (e
+g
+, becomes or partners with a “paper or essay mill” -- a ghostwriting service that sells essays, papers, and other homework writing), the Parties agree to meet and confer in good faith to address the issue
+3
+3 Professional Services/Training
+ Professional Services/Training shall be in accordance with any Order Form
+ Turnitin and you agree training is most helpful if conducted early in your term of service, and you and Turnitin further agree to work in good faith to schedule and complete training within a reasonable period after the start of term of service or within the timeframe set out by the Parties
+3
+3
+1 Training Term and Expiration
+ Notwithstanding anything to the contrary in any such separate purchase order, in-person or live training must be completed within twelve (12) months of the start of Turnitin/iThenticate service, or the expiration of the Term in which training was licensed, whichever is earlier (“Training Term Expiry”)
+ If Training is not completed by Training Term Expiry, Turnitin shall make reasonable efforts to furnish you access to training materials in lieu of training
+ Turnitin and you agree the foregoing shall constitute and fulfill Turnitin’s Training obligation
+3
+3
+2 Changes or Cancellation
+ If you must reschedule training, Turnitin shall make reasonable efforts to accommodate such request
+ There are no refunds In the event of change or cancellation
+4
+ ExamSoft Specific Service Terms
+4
+1 EULA
+ In order for a Student to access and use the examinee testing software portion of the ExamSoft Services, the Student will be required in some instances to download or otherwise access the Portal Services on or from the Student’s own device(s)
+ As a condition precedent to the Student accessing and using the ExamSoft Services, the Student will be required to agree to the End User License Agreement (“EULA”), available at https://examsoft
+com/es/eula/ which the Student must accept (through an electronic acceptance process) in order to use the ExamSoft Services
+ For purposes of ensuring Service quality, support, account control, assessment integrity, and assessment-related assistance, in the course of provision of the ExamSoft Service and prior to granting a Student access, the Student will be required to consent to ExamSoft’s collection of Test Data, which includes authorization of the collection of Test Data to enable us to provide the ExamMonitor Services (as described below)
+4
+2 EULA Requirements; Onboarding Assistance
+ You acknowledge that the requirements in Section 4
+1
+ (EULA) above are a condition precedent to Students’ access to and use of the examinee testing software portion of the ExamSoft Services, and you agree to provide us with reasonable assistance in the process of onboarding Students for use of the ExamSoft Services in furtherance of the foregoing
+4
+3 Key Administrators
+ We will provide Internet-based pages on the Site for your use in assessment and program administration
+ You will assign one or more Key Administrators to serve as ExamSoft’s primary point(s) of contact with you on software-related issues who will have password-protected access to the ExamSoft user portal
+ You (a) must maintain, and will instruct Authorized Users to maintain, the confidentiality of these passwords, and (b) are responsible for their security
+ “Key Administrator” means your designated point of contact, tasked with receiving updates and other information from ExamSoft, and directing questions to ExamSoft, having top level access rights to the Portal Services
+4
+4 Security Breach Notification
+ If there is a breach of ExamSoft’s security through your account, then you will immediately (which in no case will exceed 48 hours after you first became aware of, or first suspected, the breach) notify us of such breach
+ You may request that ExamSoft change or cause to be changed any affected password, as applicable
+4
+5 ExamSoft Product/Services Special Terms
+4
+5
+1 Clinical Judgement Exam - Consent to Notice of Data Transfer to Third Party
+ In the course of using the ExamSoft Services, you may provide us with access to certain Student personally identifiable information from education records pursuant to 34 CFR § 99
+31(a)(1)(i) and promulgated pursuant to the Family Educational Rights and Privacy Act (FERPA)
+ In the course of performing the ExamSoft Services under the Agreement between ExamSoft and you, the ExamSoft Service generates certain Student results data
+ ExamSoft is offering additional Services, which you have ordered entitled Clinical Judgment Exams module (CJE), which ExamSoft provides in partnership with third parties
+
+
+As part of the ExamSoft Service, the third party analyzes Student result data in order to validate assessment item performance and maintain and improve the quality of the offering
+ Under FERPA, ExamSoft may only disclose Student performance data to the third party if explicitly authorized by you
+ This authorization is required to provide the ExamSoft Services and ensure ongoing benchmark validity
+
+
+You acknowledge that you have a contractual relationship in place with ExamSoft that requires ExamSoft to deliver performance data to the third party to enable the third party to perform psychometric analysis and quality control to deliver quality assessments and psychometrically valid benchmarks
+ You acknowledge that you have undertaken appropriate record keeping under 34 CFR § 99
+33(b)
+
+
+You certify to ExamSoft that you have been granted authority sufficient to provide this consent
+ You consent to permitting us to transmit Student result data to third parties to perform psychometric analysis and quality control on assessment items that you have purchased from ExamSoft
+4
+5
+2 Pharmacy Benchmark Exams - Consent to Notice of Data Transfer to Third Party
+ In the course of using the ExamSoft Services, you may provide us with access to certain Student personally identifiable information from education records pursuant to 34 CFR § 99
+31(a)(1)(i) and promulgated pursuant to the Family Educational Rights and Privacy Act (FERPA)
+ In the course of performing the ExamSoft Services under the Agreement between ExamSoft and you, the ExamSoft Service generates certain Student results data
+
+
+ExamSoft is offering additional Services, which you have ordered entitled Pharmacy Benchmark Exams module, which ExamSoft provides in partnership with third parties
+
+
+As part of the ExamSoft Service, the third party analyzes Student result data in order to validate assessment item performance and maintain and improve the quality of the offering
+ Under FERPA, ExamSoft may only disclose Student performance data to the third party if explicitly authorized by you
+ This authorization is required to provide the ExamSoft Services and ensure ongoing benchmark validity
+
+
+You acknowledge that you have a contractual relationship in place with ExamSoft that requires ExamSoft to deliver performance data to the third party to enable the third party to perform psychometric analysis and quality control to deliver quality assessments and psychometrically valid benchmarks
+ You acknowledge that you have undertaken appropriate record keeping under 34 CFR § 99
+33(b)
+
+
+You certify to ExamSoft that you have been granted authority sufficient to provide this consent
+ You consent to permitting us to transmit Student result data to third parties to perform psychometric analysis and quality control on assessment items that you have purchased from ExamSoft
+4
+6 ExamMonitor Services - Consent to Notice of Data Transfer to Third Party
+
+ExamSoft Services may capture video recordings of Students while they complete an assessment
+ ExamSoft will use these video recordings to provide certain “ExamMonitor Services” (as described below), which ExamSoft provides in partnership with a third-party proctoring provider
+4
+6
+1 As part of the ExamMonitor Service, a third-party proctoring provider will analyze Student video recordings to generate exam analysis reports which permit you to evaluate whether a Student is engaged in suspicious behavior in the course of an assessment
+4
+6
+2 By using the ExamSoft Services, you acknowledge and agrees that (i) ExamSoft is permitted to deliver exam analysis reporting using a third-party proctoring provider, (ii) ExamSoft may disclose to the third-party proctoring provider Student Data to permit the third-party proctoring provider to perform analysis of Student videos, and (iii) you have undertaken appropriate record-keeping for these purposes pursuant to 34 CFR § 99
+33(b)
+4
+7 ExamSoft Services Limited Warranty
+4
+7
+1 ExamSoft warrants to you that for the term of the Agreement, the ExamSoft Services will substantially conform to the product specifications found at https://examsoft
+com/product-specifications (“ExamSoft Product Specifications”), if: (a) a Student operates the ExamSoft Service as required by the Agreement, and, properly follows all installation instructions and any recommendations of ExamSoft technical support staff; (b) any computer running the ExamSoft Service (or software) is in proper working order; (c) the Student’s computer complies with the minimum specification requirements set forth on the ExamSoft website and Authorized User Portal
+4
+7
+2 ExamSoft may modify the ExamSoft Product Specifications from time to time, including without limitation, where ExamSoft modifies or enhances ExamSoft Services and/or software functionalities
+4
+7
+3 If the ExamSoft Service fails to conform to the foregoing warranty, ExamSoft will, as its sole obligation, and your sole remedy (a) use commercially reasonable efforts to correct the non-conformity, and to redeliver the corrected ExamSoft Service to you; or (b) where ExamSoft cannot correct the non-conformity, refund to you the fees paid for the non-conforming ExamSoft Service
+4
+7
+4 The foregoing shall be your sole and exclusive remedy for breach of warranty under this Section 4
+7
+*****Turnitin uses cookies and other technologies to help us understand how our sites are used and to personalize our content and the advertising you see
+ The information we collect from you through these technologies may be shared with third parties, including advertising, social media, and analytics partners
+ By continuing to browse, by dismissing this banner, or by clicking ""Accept All"", you agree to the use, sharing, and storage of cookies and other technologies for these purposes
+ You can change your choices at any time through the Manage Preferences link in the footer of the webpage
+ To learn more about the information we collect and about how we use cookies, please see our cookie notice
+"," If we reasonably believe that any of your Content violates the law, infringes or misappropriates the rights of any third party, or otherwise violates a material term of the Agreement (including these Service Terms or the Acceptable Use Policy, available at www
+4 (Prohibited Content) may result in termination of your access to the Services and your account, in our sole discretion
+ At our sole discretion, we may provide you with information from internal monitors to understand the severity of an incident on the Services
+ If an SLA applies to the Services you purchased and you have been charged for a Service period when that Service was unavailable (as defined in the applicable SLA for each Service), you may request a Service credit equal to any charged amounts for such period by contacting the applicable Turnitin Contracting Party
+8 NO WARRANTY; DISCLAIMER OF DAMAGES; LIMITATION OF DAMAGES
+ All submitted papers will be included as source documents in the Turnitin reference database solely for the purpose of detecting plagiarism of such papers
+ If the Parties are unable to resolve the issue within 30 days, then Turnitin may terminate the Agreement and your access to the Services at its discretion without further obligation"," Turnitin may add or modify terms related to your access to or use of any Early Access Services or Early Access Regions provided via the Site at any time and without prior notice
+ Turnitin may suspend or terminate your access to or use of any Early Access Service or Early Access Region at any time and without prior notice","the terms of the Turnitin Master Registration Agreement will take precedence except for the service-specific terms provided in Section 3 (Turnitin Specific Service Terms) and Section 4 (ExamSoft Specific Service Terms) and any SLAs attached as exhibits hereto 1 1 Software Transfer Restrictions You agree not to transfer any software (including related Documentation) obtained from us or a third-party licensor in connection with the Services outside of the Services, unless you have received prior express written authorization from us to do","Turnitin may terminate your access to the Services and your account. if we reasonably believe that any of your Content violates the law, we may terminate your account. turnitin may provide you with information from internal monitors to understand the severity of an incident. no warranty; DISCLAIMER OF DAMAGES; LIMITATION OF DAMAGES.",Turnitin may add or modify terms related to your access to or use of any Early Access Services or Early Access Regions provided via the Site at any time and without prior notice Turnitin may suspend or terminate your access to or use of any Early Access Service or Early Access Region at any time and without prior notice Turnitin may suspend or terminate your access to or use of any Early Access Service or Early Access Region at any time and without prior notice Turnitin may suspend or terminate your access to or use of any Early Access Service or Early Access Region

@@ -1,16 +1,12 @@
 import sys
 import pickle
 import os
-from sentence_transformers import SentenceTransformer
-from sklearn.base import BaseEstimator, TransformerMixin
 import pandas as pd
-import os
 from googlesearch import search
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
-import numpy as np
 import warnings
 
 # Ignore FutureWarning
@@ -18,7 +14,31 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 from transformers import AutoTokenizer, T5ForConditionalGeneration
 from ai import SentenceTransformerFeatures, POSTagFeatures, NERFeatures, KeywordFeatures, DependencyFeatures, SentimentFeatures
-    
+# Custom unpickler example
+
+class CustomUnpickler(pickle.Unpickler):
+    def find_class(self, module, name):
+        if name == 'SentenceTransformerFeatures':
+            from ai import SentenceTransformerFeatures
+            return SentenceTransformerFeatures
+        elif name == 'POSTagFeatures':
+            from ai import POSTagFeatures
+            return POSTagFeatures
+        elif name == 'NERFeatures':
+            from ai import NERFeatures
+            return NERFeatures
+        elif name == 'KeywordFeatures':
+            from ai import KeywordFeatures
+            return KeywordFeatures
+        elif name == 'DependencyFeatures':
+            from ai import DependencyFeatures
+            return DependencyFeatures
+        elif name == 'SentimentFeatures':
+            from ai import SentimentFeatures
+            return SentimentFeatures
+
+        return super().find_class(module, name)
+
 def summarize(text):
     if text == '':
         return text
@@ -31,14 +51,14 @@ def summarize(text):
 def predict(sentence):
     # Load the model from the file
     model_path = os.path.join(os.path.dirname(__file__), '../ai_models/model2.pkl')
-    with open(model_path, 'rb') as file:
-        model = pickle.load(file)
+    with open(os.path.join(os.path.dirname(__file__), '../ai_models/model2.pkl'), 'rb') as file:
+        model = CustomUnpickler(file).load()
     return model.predict([sentence])[0]
 
 def analyse_tos(tos, app=""):
     scans_path = os.path.join(os.path.dirname(__file__), '../scans.csv')
     scans = pd.read_csv(scans_path)
-    #online_scans_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQjd7DmxuwsQccfgX02enJf-g4DnWnvN5ZAkEHSfedfpqTF9JjYoSkvFUWNoTIy_PW6Kl_yhuzYtHy5/pub?gid=0&single=true&output=csv' 
+    #online_scans_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQjd7DmxuwsQccfgX02enJf-g4DnWnvN5ZAkEHSfedfpqTF9JjYoSkvFUWNoTIy_PW6Kl_yhuzYtHy5/pub?gid=0&single=true&output=csv'
     #online_scans = pd.read_csv(online_scans_url)
     if app not in scans['App'].values and tos.strip()== '':
         print("No terms of service found for " + app + ". Searching the web...")
@@ -57,7 +77,7 @@ def analyse_tos(tos, app=""):
         for i in p_elements:
             tos += i.text
         driver.quit()
-        
+
     print(scans['App'].values)
     if app in scans['App'].values:
         categorized_sentences = scans[scans['App'] == app].iloc[0].tolist()
@@ -71,21 +91,21 @@ def analyse_tos(tos, app=""):
         for sentence in sentences:
             categorized_sentences[predict(sentence)].append(sentence)
             #print(categorized_sentences[i])
-        categorized_sentences = ["\n".join(categorized_sentences[0]), 
-                                "\n".join(categorized_sentences[1]), 
+        categorized_sentences = ["\n".join(categorized_sentences[0]),
+                                "\n".join(categorized_sentences[1]),
                                 "\n".join(categorized_sentences[2])]
         for i in range(3):
             categorized_sentences.append(summarize(categorized_sentences[i]))
-        dct = {'App': app, 
-                              'Level_0': categorized_sentences[0], 
-                              'Level_1': categorized_sentences[1], 
+        dct = {'App': app,
+                              'Level_0': categorized_sentences[0],
+                              'Level_1': categorized_sentences[1],
                               'Level_2': categorized_sentences[2],
                               'Summary_0': categorized_sentences[3],
                               'Summary_1': categorized_sentences[4],
                               'Summary_2': categorized_sentences[5]}
         dct = {k:[v] for k,v in dct.items()}
 
-        scans = pd.concat([scans, pd.DataFrame(dct)], 
+        scans = pd.concat([scans, pd.DataFrame(dct)],
                               ignore_index=True)
         scans.to_csv(scans_path, index=False)
 
