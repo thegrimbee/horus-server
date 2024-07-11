@@ -18,11 +18,12 @@ def analyse():
     tos = data.get('tos')
     appName = data.get('appName')
     categorized_sentences = analyse_tos(tos, appName)
+    for i in range(len(categorized_sentences)):
+        if type(categorized_sentences[i]) != str or not categorized_sentences[i]:
+            categorized_sentences[i] = ""
     return jsonify({"danger": categorized_sentences[2],
                     "warning": categorized_sentences[1],
                     "normal": categorized_sentences[0],
                     "danger_summary": categorized_sentences[5],
                     "warning_summary": categorized_sentences[4],
                     "normal_summary": categorized_sentences[3]})
-
-app.run(debug=True)

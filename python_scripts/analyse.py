@@ -59,6 +59,13 @@ def summarize(text):
 def predict(sentence, model):
     return model.predict([sentence])[0]
 
+def check_valid(c_s):
+    total = 0
+    for i in c_s[:3]:
+        if type(i) == str:
+            total += len(i)
+    return total > 10
+
 def analyse_tos(tos, app="", url=""):
     print(f'Analysing {app}')
     scans_path = os.path.join(os.path.dirname(__file__), '../scans.csv')
@@ -79,7 +86,7 @@ def analyse_tos(tos, app="", url=""):
             tos += i.text
         print(tos[:50])
         driver.quit()
-        
+
     memory_use = current_process.memory_info().rss
     print(f"Current memory usage: {memory_use / 1024**2:.2f} MB")
     print(scans['App'].values)
@@ -87,20 +94,20 @@ def analyse_tos(tos, app="", url=""):
     if app in scans['App'].values:
         print('App found in scans.csv')
         categorized_sentences = scans[scans['App'] == app].iloc[0].tolist()[1:]
-    if len(categorized_sentences[0]) + len(categorized_sentences[1]) + len(categorized_sentences[2]) < 10:
+    if not check_valid(categorized_sentences):
         sentences = tos.split('.')
         model_path = os.path.join(os.path.dirname(__file__), '../ai_models/model2.pkl')
         with open(os.path.join(model_path), 'rb') as file:
             model = CustomUnpickler(file).load()
         memory_use = current_process.memory_info().rss
         print(f"Current memory usage: {memory_use / 1024**2:.2f} MB")
+        categorized_sentences = ["","",""]
         for sentence in sentences:
             categorized_sentences[predict(sentence, model)] += "\n" + sentence
         memory_use = current_process.memory_info().rss
         print(f"Current memory usage: {memory_use / 1024**2:.2f} MB")
         for i in range(3):
             categorized_sentences.append(summarize(categorized_sentences[i]))
-        print(categorized_sentences[3:])
         dct = {'App': app,
                               'Level_0': categorized_sentences[0],
                               'Level_1': categorized_sentences[1],
@@ -112,10 +119,14 @@ def analyse_tos(tos, app="", url=""):
 
         scans = pd.concat([scans, pd.DataFrame(dct)],
                               ignore_index=True)
-        if len(categorized_sentences[0]) + len(categorized_sentences[1]) + len(categorized_sentences[2]) > 10:
+        if check_valid(categorized_sentences):
             scans.to_csv(scans_path, index=False)
+    counter = 0
     for sentence in categorized_sentences:
-        print(sentence[:50])
+        print('Sentence' + str(counter))
+        counter += 1
+        if (type(sentence) == str):
+            print(sentence[:50])
     memory_use = current_process.memory_info().rss
     print(f"Current memory usage: {memory_use / 1024**2:.2f} MB")
     return categorized_sentences
