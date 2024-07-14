@@ -76,7 +76,7 @@ def analyse_tos(tos, app="", url=""):
             tos_urls = search(app + " terms of service", num=1, stop=1)
             for i in tos_urls:
                 url = i
-        print(url)
+        print("url:", url)
         memory_use = current_process.memory_info().rss
         print(f"Current memory usage: {memory_use / 1024**2:.2f} MB")
         driver = webdriver.Firefox(options=webdriver_options)
@@ -84,7 +84,7 @@ def analyse_tos(tos, app="", url=""):
         p_elements = driver.find_elements(By.TAG_NAME, 'p')
         for i in p_elements:
             tos += i.text
-        print(tos[:50])
+        print("tos:", tos[:50])
         driver.quit()
 
     memory_use = current_process.memory_info().rss
