@@ -70,7 +70,9 @@ def analyse_tos(tos, app="", url=""):
     print(f'Analysing {app}')
     scans_path = os.path.join(os.path.dirname(__file__), '../scans.csv')
     scans = pd.read_csv(scans_path)
-    if app not in scans['App'].values and tos.strip()== '':
+    scanned_apps = map(scans['App'].values, lambda x: x.lower())
+    is_scanned = app.lower() in scanned_apps
+    if not is_scanned and tos.strip()== '':
         print("No terms of service found for " + app + ". Searching the web...")
         if url == '':
             tos_urls = search(app + " terms of service", num=1, stop=1)
@@ -89,9 +91,8 @@ def analyse_tos(tos, app="", url=""):
 
     memory_use = current_process.memory_info().rss
     print(f"Current memory usage: {memory_use / 1024**2:.2f} MB")
-    print(scans['App'].values)
     categorized_sentences = ["","",""]
-    if app in scans['App'].values:
+    if is_scanned:
         print('App found in scans.csv')
         categorized_sentences = scans[scans['App'] == app].iloc[0].tolist()[1:]
     if not check_valid(categorized_sentences):
