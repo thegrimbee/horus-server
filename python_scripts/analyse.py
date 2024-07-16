@@ -70,7 +70,8 @@ def analyse_tos(tos, app="", url=""):
     print(f'Analysing {app}')
     scans_path = os.path.join(os.path.dirname(__file__), '../scans.csv')
     scans = pd.read_csv(scans_path)
-    scanned_apps = map(scans['App'].values, lambda x: x.lower())
+    scanned_apps = list(scans['App'].values)
+    scanned_apps = [app.lower() for app in scanned_apps]
     is_scanned = app.lower() in scanned_apps
     if not is_scanned and tos.strip()== '':
         print("No terms of service found for " + app + ". Searching the web...")
@@ -94,7 +95,7 @@ def analyse_tos(tos, app="", url=""):
     categorized_sentences = ["","",""]
     if is_scanned:
         print('App found in scans.csv')
-        categorized_sentences = scans[scans['App'] == app].iloc[0].tolist()[1:]
+        categorized_sentences = scans[scans['App'].str.lower() == app.lower()].iloc[0].tolist()[1:]
     if not check_valid(categorized_sentences):
         sentences = tos.split('.')
         model_path = os.path.join(os.path.dirname(__file__), '../ai_models/model2.pkl')

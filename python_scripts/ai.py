@@ -204,7 +204,6 @@ if __name__ == '__main__':
             ('sentiment', SentimentFeatures()),
             ('keywords', KeywordFeatures(keywords=["privacy", "data", "rights", "terminate", "warranty", "loss"])),
             # ('glove', GloVeEmbeddings(model_name='glove-wiki-gigaword-100'))
-            #('textblob', TextBlobFeatures()),
         ])),
         # ('smote', SMOTE(sampling_strategy='auto')),
         ('adasyn', ADASYN(sampling_strategy='auto', n_neighbors=3)),
