@@ -18,12 +18,9 @@ def extract_data(appName):
             extracted_data["level"].append(i)
     output_path = path.join(path.dirname(__file__), '../data.csv')
     pd.DataFrame(extracted_data).to_csv(output_path, index=False)
-    with open('data.txt', 'w') as file:
+    with open('data.txt', 'w', errors='ignore', encoding='utf-8') as file:
         for sentence, level in zip(extracted_data['sentence'], extracted_data['level']):
             sentence = sentence.strip('\"')
             file.write(f'{sentence},{level}\n')
 
-
-
-
-extract_data('Reddit')
+extract_data('Mobile Legends')

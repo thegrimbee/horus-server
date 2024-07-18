@@ -84,7 +84,11 @@ def analyse_tos(tos, app="", url=""):
         print(f"Current memory usage: {memory_use / 1024**2:.2f} MB")
         driver = webdriver.Firefox(options=webdriver_options)
         driver.get(url)
+        driver.implicitly_wait(10)
         p_elements = driver.find_elements(By.TAG_NAME, 'p')
+        with open(os.path.join(os.path.dirname(__file__), '../result.html'), 'w', errors='ignore', encoding='utf-8') as file:
+            page_source = driver.page_source
+            file.write(page_source)
         for i in p_elements:
             tos += i.text
         print("tos:", tos[:50])

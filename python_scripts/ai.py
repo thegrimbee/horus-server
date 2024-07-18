@@ -202,7 +202,7 @@ if __name__ == '__main__':
             ('ner', NERFeatures()),
             ('dependency', DependencyFeatures()),
             ('sentiment', SentimentFeatures()),
-            ('keywords', KeywordFeatures(keywords=["privacy", "data", "rights", "terminate", "warranty", "loss"])),
+            ('keywords', KeywordFeatures(keywords=["privacy", "data", "rights", "terminate", "warranty", "loss", "age", "personal", "information", "location"])),
             # ('glove', GloVeEmbeddings(model_name='glove-wiki-gigaword-100'))
         ])),
         # ('smote', SMOTE(sampling_strategy='auto')),
