@@ -13,6 +13,7 @@ from sklearn.feature_selection import SelectFromModel
 from sentence_transformers import SentenceTransformer
 from imblearn.over_sampling import ADASYN
 from textblob import TextBlob
+from collections import defaultdict
 # import gensim.downloader as api
 import spacy
 import numpy as np
@@ -36,80 +37,105 @@ nlp = spacy.load('en_core_web_sm')
 
 class POSTagFeatures(BaseEstimator, TransformerMixin):
     def __init__(self):
-        self.vectorizer = CountVectorizer()
+        self.vectorizer = DictVectorizer(sparse=True)
 
-    def fit(self, X, y=None):
+    def fit_transform(self, X, y=None):
         pos_tags = [" ".join([token.pos_ for token in nlp(doc)]) for doc in X]
-        # Fit the vectorizer with the extracted POS tags
-        self.vectorizer.fit(pos_tags)
-        return self
+        # Directly fit the vectorizer with the extracted POS tags and transform the data
+        return self.vectorizer.fit_transform(pos_tags)
     
-    def transform(self, X):
-        pos_tags = [" ".join([token.pos_ for token in nlp(doc)]) for doc in X]
-        return self.vectorizer.transform(pos_tags)
+    # def fit(self, X, y=None):
+    #     pos_tags = [" ".join([token.pos_ for token in nlp(doc)]) for doc in X]
+    #     # Fit the vectorizer with the extracted POS tags
+    #     self.vectorizer.fit(pos_tags)
+    #     return self
+    
+    # def transform(self, X):
+    #     pos_tags = [" ".join([token.pos_ for token in nlp(doc)]) for doc in X]
+    #     return self.vectorizer.transform(pos_tags)
 
 class NERFeatures(BaseEstimator, TransformerMixin):
     def __init__(self):
         self.vectorizer = DictVectorizer(sparse=True)
-        self.fitted = False
+        # self.fitted = False
 
-    def fit(self, X, y=None):
+    def fit_transform(self, X, y=None):
         label_dicts = []
         for doc in X:
             labels = [ent.label_ for ent in nlp(doc).ents]
             label_freq = {label: labels.count(label) for label in set(labels)}
             label_dicts.append(label_freq)
         
-        # Fit the DictVectorizer to the NER label frequencies
-        self.vectorizer.fit(label_dicts)
-        self.fitted = True
-        return self
+        # Fit the DictVectorizer to the NER label frequencies and transform the data in one step
+        return self.vectorizer.fit_transform(label_dicts)
+    # def fit(self, X, y=None):
+    #     label_dicts = []
+    #     for doc in X:
+    #         labels = [ent.label_ for ent in nlp(doc).ents]
+    #         label_freq = {label: labels.count(label) for label in set(labels)}
+    #         label_dicts.append(label_freq)
+        
+    #     # Fit the DictVectorizer to the NER label frequencies
+    #     self.vectorizer.fit(label_dicts)
+    #     self.fitted = True
+    #     return self
     
-    def transform(self, X):
-        if not self.fitted:
-            raise RuntimeError("The transformer has not been fitted yet.")
+    # def transform(self, X):
+    #     if not self.fitted:
+    #         raise RuntimeError("The transformer has not been fitted yet.")
         
-        # Convert NER labels to a list of dictionaries with label frequencies
-        label_dicts = []
-        for doc in X:
-            labels = [ent.label_ for ent in nlp(doc).ents]
-            label_freq = {label: labels.count(label) for label in set(labels)}
-            label_dicts.append(label_freq)
+    #     # Convert NER labels to a list of dictionaries with label frequencies
+    #     label_dicts = []
+    #     for doc in X:
+    #         labels = [ent.label_ for ent in nlp(doc).ents]
+    #         label_freq = {label: labels.count(label) for label in set(labels)}
+    #         label_dicts.append(label_freq)
         
-        # Transform the list of label frequency dictionaries to a numeric matrix
-        return self.vectorizer.transform(label_dicts)
+    #     # Transform the list of label frequency dictionaries to a numeric matrix
+    #     return self.vectorizer.transform(label_dicts)
 
 class DependencyFeatures(BaseEstimator, TransformerMixin):
     def __init__(self):
         self.vectorizer = DictVectorizer(sparse=True)
-        self.fitted = False
+        # self.fitted = False
 
-    def fit(self, X, y=None):
+    def fit_transform(self, X, y=None):
         # Convert dependency tags to a list of dictionaries with tag frequencies
-        tag_dicts = []
+        rel_dicts = []
         for doc in X:
-            tags = [token.dep_ for token in nlp(doc)]
-            tag_freq = {tag: tags.count(tag) for tag in set(tags)}
-            tag_dicts.append(tag_freq)
+            dep_rels = ["{}_{}".format(token.dep_, token.head.text) for token in nlp(doc)]
+            rel_freq = {rel: dep_rels.count(rel) for rel in set(dep_rels)}
+            rel_dicts.append(rel_freq)
         
-        # Fit the DictVectorizer to the dependency tag frequencies
-        self.vectorizer.fit(tag_dicts)
-        self.fitted = True
-        return self
+        # Fit the DictVectorizer to the dependency tag frequencies and transform the data
+        return self.vectorizer.fit_transform(rel_dicts)
     
-    def transform(self, X):
-        if not self.fitted:
-            raise RuntimeError("The transformer has not been fitted yet.")
+    # def fit(self, X, y=None):
+    #     # Convert dependency tags to a list of dictionaries with tag frequencies
+    #     rel_dicts = []
+    #     for doc in X:
+    #         dep_rels = ["{}_{}".format(token.dep_, token.head.text) for token in nlp(doc)]
+    #         rel_freq = {rel: dep_rels.count(rel) for rel in set(dep_rels)}
+    #         rel_dicts.append(rel_freq)
         
-        # Convert dependency tags to a list of dictionaries with tag frequencies
-        tag_dicts = []
-        for doc in X:
-            tags = [token.dep_ for token in nlp(doc)]
-            tag_freq = {tag: tags.count(tag) for tag in set(tags)}
-            tag_dicts.append(tag_freq)
+    #     # Fit the DictVectorizer to the dependency tag frequencies
+    #     self.vectorizer.fit(rel_dicts)
+    #     self.fitted = True
+    #     return self
+    
+    # def transform(self, X):
+    #     if not self.fitted:
+    #         raise RuntimeError("The transformer has not been fitted yet.")
         
-        # Transform the list of tag frequency dictionaries to a numeric matrix
-        return self.vectorizer.transform(tag_dicts)
+    #     # Convert dependency tags to a list of dictionaries with tag frequencies
+    #     rel_dicts = []
+    #     for doc in X:
+    #         dep_rels = ["{}_{}".format(token.dep_, token.head.text) for token in nlp(doc)]
+    #         rel_freq = {rel: dep_rels.count(rel) for rel in set(dep_rels)}
+    #         rel_dicts.append(rel_freq)
+        
+    #     # Transform the list of tag frequency dictionaries to a numeric matrix
+    #     return self.vectorizer.transform(rel_dicts)
     
 class SentimentFeatures(BaseEstimator, TransformerMixin):
     def fit(self, X, y=None):
@@ -128,6 +154,42 @@ class KeywordFeatures(BaseEstimator, TransformerMixin):
     def transform(self, X):
         return [[doc.count(keyword) for keyword in self.keywords] for doc in X]
 
+class ClauseContextFeatures(BaseEstimator, TransformerMixin):
+    def __init__(self, keywords):
+        self.keywords = keywords
+        self.vectorizer = DictVectorizer(sparse=True)
+    
+    def fit_transform(self, X, y=None):
+        context_dicts = self._generate_context_dicts(X)
+        return self.vectorizer.fit_transform(context_dicts)
+
+    # def fit(self, X, y=None):
+    #     # Generate clause-level context features
+    #     context_dicts = self._generate_context_dicts(X)
+    #     self.vectorizer.fit(context_dicts)
+    #     return self
+
+    # def transform(self, X):
+    #     # Generate clause-level context features
+    #     context_dicts = self._generate_context_dicts(X)
+    #     return self.vectorizer.transform(context_dicts)
+
+    def _generate_context_dicts(self, X):
+        context_dicts = []
+        for doc in X:
+            doc_nlp = nlp(doc)
+            clauses = [sent for sent in doc_nlp.sents]
+            context_dict = defaultdict(int)
+            for clause in clauses:
+                clause_text = clause.text
+                for keyword in self.keywords:
+                    if keyword in clause_text:
+                        context_dict[keyword] += 1
+                        # You can also add more contextual information here
+                        context_dict[f'{keyword}_context'] = clause_text
+            context_dicts.append(context_dict)
+        return context_dicts
+    
 # class GloVeEmbeddings(BaseEstimator, TransformerMixin):
 #     def __init__(self, model_name='glove-wiki-gigaword-100'):
 #         self.model_name = model_name
@@ -159,7 +221,7 @@ class SentenceTransformerFeatures(BaseEstimator, TransformerMixin):
     def transform(self, X):
         embeddings = self.model.encode(X if type(X) == list else X.tolist(), convert_to_tensor=False)
         return np.array(embeddings)
-    
+
 def custom_loss(y_true, y_pred):
     score = 0
     for true, pred in zip(y_true, y_pred):
@@ -193,16 +255,18 @@ if __name__ == '__main__':
     Y_test = val_data['Harm Level']
 
     length = len(X_train)
-
+    keywords = ["privacy", "data", "rights", "terminate", "warranty", "loss", "age", "personal", 
+                "information", "location", "termination", "cookies", "security", "third-party",]
     pipeline = ImbPipeline([
         ('features', FeatureUnion([
             # ('tfidf', TfidfVectorizer(ngram_range=(1, 2), stop_words='english', max_df=0.5, min_df=5)),
-            ('sentence_transformer', SentenceTransformerFeatures()),
+            ('keywords', KeywordFeatures(keywords=keywords)),
             ('pos_tags', POSTagFeatures()),
             ('ner', NERFeatures()),
             ('dependency', DependencyFeatures()),
+            ('clause_context', ClauseContextFeatures(keywords=keywords)),
             ('sentiment', SentimentFeatures()),
-            ('keywords', KeywordFeatures(keywords=["privacy", "data", "rights", "terminate", "warranty", "loss", "age", "personal", "information", "location"])),
+            ('sentence_transformer', SentenceTransformerFeatures()),
             # ('glove', GloVeEmbeddings(model_name='glove-wiki-gigaword-100'))
         ])),
         # ('smote', SMOTE(sampling_strategy='auto')),
