@@ -164,6 +164,7 @@ class NERFeatures(BaseEstimator, TransformerMixin):
             transformed_data = transformed_data.multiply(self.weight)
         return transformed_data
 
+
 class DependencyFeatures(BaseEstimator, TransformerMixin):
     def __init__(self, weight=1):
         self.vectorizer = DictVectorizer(sparse=True)
@@ -346,7 +347,6 @@ xgb_params = {
     'learning_rate': 0.05,
     'max_depth': 5
 }
-
 
 if __name__ == '__main__':
     custom_scorer = make_scorer(grid_search_custom_loss, greater_is_better=True)
