@@ -394,7 +394,7 @@ if __name__ == '__main__':
         ('adasyn', ADASYN(sampling_strategy='auto', n_neighbors=3)),
         # ('scaler', StandardScaler(with_mean=False)),
         ('clf', CustomXGBClassifier(params=xgb_params, num_boost_round=250, learning_rate=0.075, max_depth=8,
-                                     hessian_penalty=0.2, sqrt=False, penalty='factor')),
+                                    hessian_penalty=0.2, sqrt=False, penalty='factor')),
         # ('clf', GradientBoostingClassifier(
         #     n_estimators=200, 
         #     max_depth=5, 
