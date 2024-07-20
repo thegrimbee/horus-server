@@ -73,7 +73,7 @@ def analyse_tos(tos, app="", url=""):
     scanned_apps = list(scans['App'].values)
     scanned_apps = [app.lower() for app in scanned_apps]
     is_scanned = app.lower() in scanned_apps
-    if not is_scanned and tos.strip()== '':
+    if tos.strip()== '':
         print("No terms of service found for " + app + ". Searching the web...")
         if url == '':
             tos_urls = search(app + " terms of service", num=1, stop=1)
@@ -84,9 +84,21 @@ def analyse_tos(tos, app="", url=""):
         print(f"Current memory usage: {memory_use / 1024**2:.2f} MB")
         driver = webdriver.Firefox(options=webdriver_options)
         driver.get(url)
+        driver.implicitly_wait(10)
         p_elements = driver.find_elements(By.TAG_NAME, 'p')
-        for i in p_elements:
-            tos += i.text
+        LENGTH_CRITERIA = 30
+        WORD_CRITERIA = 5
+        with open(os.path.join(os.path.dirname(__file__), '../result.html'), 'w', errors='ignore', encoding='utf-8') as file:
+            page_source = driver.page_source
+            file.write(page_source)
+        for element in p_elements:
+            if len(element.text) > LENGTH_CRITERIA and len(element.text.split()) > WORD_CRITERIA:
+                tos += element.text
+        if len(tos) < LENGTH_CRITERIA:
+            div_elements = driver.find_elements(By.TAG_NAME, 'div')
+            for element in div_elements:
+                if len(element.text) > LENGTH_CRITERIA and len(element.text.split()) > WORD_CRITERIA:
+                    tos += element.text
         print("tos:", tos[:50])
         driver.quit()
 
@@ -95,7 +107,7 @@ def analyse_tos(tos, app="", url=""):
     categorized_sentences = ["","",""]
     if is_scanned:
         print('App found in scans.csv')
-        categorized_sentences = scans[scans['App'] == app].iloc[0].tolist()[1:]
+        categorized_sentences = scans[scans['App'].str.lower() == app.lower()].iloc[0].tolist()[1:]
     if not check_valid(categorized_sentences):
         sentences = tos.split('.')
         model_path = os.path.join(os.path.dirname(__file__), '../ai_models/model2.pkl')
