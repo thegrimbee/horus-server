@@ -21,7 +21,9 @@ current_process = psutil.Process(pid)
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 from transformers import AutoTokenizer, T5ForConditionalGeneration
-from ai import SentenceTransformerFeatures, POSTagFeatures, NERFeatures, KeywordFeatures, DependencyFeatures, SentimentFeatures
+from ai import SentenceTransformerFeatures, POSTagFeatures, NERFeatures, \
+KeywordFeatures, DependencyFeatures, SentimentFeatures, CustomXGBClassifier, \
+ClauseContextFeatures
 # Custom unpickler example
 
 class CustomUnpickler(pickle.Unpickler):
@@ -44,6 +46,12 @@ class CustomUnpickler(pickle.Unpickler):
         elif name == 'SentimentFeatures':
             from ai import SentimentFeatures
             return SentimentFeatures
+        elif name == 'ClauseContextFeatures':
+            from ai import ClauseContextFeatures
+            return ClauseContextFeatures
+        elif name == 'CustomXGBClassifier':
+            from ai import CustomXGBClassifier
+            return CustomXGBClassifier
 
         return super().find_class(module, name)
 

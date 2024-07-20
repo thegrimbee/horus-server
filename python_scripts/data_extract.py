@@ -23,4 +23,4 @@ def extract_data(appName):
             sentence = sentence.strip('\"')
             file.write(f'{sentence},{level}\n')
 
-extract_data('Mobile Legends')
+extract_data('OneNote')

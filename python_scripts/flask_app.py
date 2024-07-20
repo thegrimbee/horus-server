@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
 from analyse import analyse_tos
 from flask_cors import CORS
-from ai import SentenceTransformerFeatures, POSTagFeatures, NERFeatures, KeywordFeatures, DependencyFeatures, SentimentFeatures
+from ai import SentenceTransformerFeatures, POSTagFeatures, NERFeatures, \
+KeywordFeatures, DependencyFeatures, SentimentFeatures, CustomXGBClassifier, \
+ClauseContextFeatures
 import pandas as pd
 from os import path
 
