@@ -22,83 +22,6 @@ import os
 
 nlp = spacy.load('en_core_web_sm')
 
-def softmax(x):
-    exp_x = np.exp(x - np.max(x, axis=1, keepdims=True))
-    return exp_x / np.sum(exp_x, axis=1, keepdims=True)
-
-def xgb_custom_loss_calculate(y_true, y_pred, hessian_penalty=1, sqrt=False, penalty='factor'):
-    num_classes = 3
-    num_samples = y_true.shape[0]
-    
-    # Reshape y_pred to [num_samples, num_classes]
-    y_pred = y_pred.reshape(num_samples, num_classes)
-    
-    # Apply softmax to get predicted probabilities
-    y_pred_prob = softmax(y_pred)
-    
-    # Initialize gradient and hessian
-    gradient = np.zeros_like(y_pred)
-    hessian = np.zeros_like(y_pred)
-    # Compute gradient and hessian for each class
-    for i in range(num_classes):
-        y_true_i = (y_true == i).astype(float)
-        gradient[:, i] = y_pred_prob[:, i] - y_true_i
-        hessian[:, i] = y_pred_prob[:, i] * (1.0 - y_pred_prob[:, i])
-    penalty_conditions = [
-        ((y_true == 2) & (np.argmax(y_pred_prob, axis=1) == 0), 0, 20),
-        ((y_true == 1) & (np.argmax(y_pred_prob, axis=1) == 0), 0, 6.5),
-        ((y_true == 2) & (np.argmax(y_pred_prob, axis=1) == 1), 1, 0.15),
-        ((y_true == 0) & (np.argmax(y_pred_prob, axis=1) == 1), 1, 1),
-        ((y_true == 1) & (np.argmax(y_pred_prob, axis=1) == 2), 2, 1.5),
-        ((y_true == 0) & (np.argmax(y_pred_prob, axis=1) == 2), 2, 8),
-        ((y_true == 2) & (np.argmax(y_pred_prob, axis=1) == 2), 2, 0.25),
-    ]
-    
-    if penalty == 'factor':
-        
-        # Original penalty factors for the gradient
-        penalty_factors_gradient = np.ones_like(gradient)
-
-        # New penalty factors for the Hessian, initially the same as for the gradient
-        penalty_factors_hessian = np.ones_like(hessian)
-
-        # Define a reduction factor for the Hessian penalties
-        hessian_penalty_reduction_factor = hessian_penalty  # Example: Reduce Hessian penalties by half
-
-        for condition, pred_class, factor in penalty_conditions:
-            penalty_factors_gradient[condition, pred_class] *= factor
-            # Apply reduced penalty to Hessian
-            if sqrt:
-                adjusted_factor = np.sqrt(factor) * factor  # Example of a non-linear adjustment
-                penalty_factors_hessian[condition, pred_class] *= adjusted_factor
-            else:
-                penalty_factors_hessian[condition, pred_class] *= factor * hessian_penalty_reduction_factor
-        
-        # Apply penalties to gradients and hessians separately
-        gradient *= penalty_factors_gradient
-        hessian *= penalty_factors_hessian
-    elif penalty == 'exp':
-        for condition, class_index, target in penalty_conditions:
-            # Calculate the distance from the target probability
-            distance = np.abs(y_pred_prob[:, class_index] * target)
-            
-            # Apply exponential decay based on the distance
-            penalty = np.exp(-1 / distance)
-            
-            # Find indices where the condition is True
-            condition_indices = np.where(condition)
-            
-            # Adjust the gradient and Hessian for these indices
-            gradient[condition_indices, class_index] += penalty[condition_indices]
-            hessian[condition_indices, class_index] += penalty[condition_indices] * hessian_penalty
-    return gradient.flatten(), hessian.flatten()
-
-# Custom loss function wrapper for XGBoost
-def xgb_custom_loss(y_pred, dtrain, hessian_penalty=1, sqrt=False, penalty='factor'):
-    y_true = dtrain.get_label()
-    gradient, hessian = xgb_custom_loss_calculate(y_true, y_pred, hessian_penalty, sqrt, penalty)
-    return gradient, hessian
-
 def custom_loss(true, pred):
     if true == 2 and pred == 1:
         return 9
@@ -314,9 +237,85 @@ class CustomXGBClassifier(BaseEstimator, ClassifierMixin):
         self.sqrt = sqrt
         self.classes_ = np.array([0, 1, 2])
 
+    def softmax(self, x):
+        exp_x = np.exp(x - np.max(x, axis=1, keepdims=True))
+        return exp_x / np.sum(exp_x, axis=1, keepdims=True)
+    
+    def xgb_custom_loss_calculate(self, y_true, y_pred, hessian_penalty=1, sqrt=False, penalty='factor'):
+        num_classes = 3
+        num_samples = y_true.shape[0]
+        
+        # Reshape y_pred to [num_samples, num_classes]
+        y_pred = y_pred.reshape(num_samples, num_classes)
+        
+        # Apply softmax to get predicted probabilities
+        y_pred_prob = self.softmax(y_pred)
+        
+        # Initialize gradient and hessian
+        gradient = np.zeros_like(y_pred)
+        hessian = np.zeros_like(y_pred)
+        # Compute gradient and hessian for each class
+        for i in range(num_classes):
+            y_true_i = (y_true == i).astype(float)
+            gradient[:, i] = y_pred_prob[:, i] - y_true_i
+            hessian[:, i] = y_pred_prob[:, i] * (1.0 - y_pred_prob[:, i])
+        penalty_conditions = [
+            ((y_true == 2) & (np.argmax(y_pred_prob, axis=1) == 0), 0, 20),
+            ((y_true == 1) & (np.argmax(y_pred_prob, axis=1) == 0), 0, 6.5),
+            ((y_true == 2) & (np.argmax(y_pred_prob, axis=1) == 1), 1, 0.15),
+            ((y_true == 0) & (np.argmax(y_pred_prob, axis=1) == 1), 1, 1),
+            ((y_true == 1) & (np.argmax(y_pred_prob, axis=1) == 2), 2, 1.5),
+            ((y_true == 0) & (np.argmax(y_pred_prob, axis=1) == 2), 2, 8),
+            ((y_true == 2) & (np.argmax(y_pred_prob, axis=1) == 2), 2, 0.25),
+        ]
+        
+        if penalty == 'factor':
+            
+            # Original penalty factors for the gradient
+            penalty_factors_gradient = np.ones_like(gradient)
+
+            # New penalty factors for the Hessian, initially the same as for the gradient
+            penalty_factors_hessian = np.ones_like(hessian)
+
+            # Define a reduction factor for the Hessian penalties
+            hessian_penalty_reduction_factor = hessian_penalty  # Example: Reduce Hessian penalties by half
+
+            for condition, pred_class, factor in penalty_conditions:
+                penalty_factors_gradient[condition, pred_class] *= factor
+                # Apply reduced penalty to Hessian
+                if sqrt:
+                    adjusted_factor = np.sqrt(factor) * factor  # Example of a non-linear adjustment
+                    penalty_factors_hessian[condition, pred_class] *= adjusted_factor
+                else:
+                    penalty_factors_hessian[condition, pred_class] *= factor * hessian_penalty_reduction_factor
+            
+            # Apply penalties to gradients and hessians separately
+            gradient *= penalty_factors_gradient
+            hessian *= penalty_factors_hessian
+        elif penalty == 'exp':
+            for condition, class_index, target in penalty_conditions:
+                # Calculate the distance from the target probability
+                distance = np.abs(y_pred_prob[:, class_index] * target)
+                
+                # Apply exponential decay based on the distance
+                penalty = np.exp(-1 / distance)
+                
+                # Find indices where the condition is True
+                condition_indices = np.where(condition)
+                
+                # Adjust the gradient and Hessian for these indices
+                gradient[condition_indices, class_index] += penalty[condition_indices]
+                hessian[condition_indices, class_index] += penalty[condition_indices] * hessian_penalty
+        return gradient.flatten(), hessian.flatten()
+
+    def xgb_custom_loss(self, y_pred, dtrain, hessian_penalty=1, sqrt=False, penalty='factor'):
+        y_true = dtrain.get_label()
+        gradient, hessian = self.xgb_custom_loss_calculate(y_true, y_pred, hessian_penalty, sqrt, penalty)
+        return gradient, hessian
+    
     def fit(self, X, y):
         dtrain = xgb.DMatrix(data=X, label=y)
-        customised_hessian_loss_func = lambda y_pred, dtrain: xgb_custom_loss(y_pred, dtrain, 
+        customised_hessian_loss_func = lambda y_pred, dtrain: self.xgb_custom_loss(y_pred, dtrain, 
                                                                               self.hessian_penalty, self.sqrt,
                                                                               self.penalty)
         self.model = xgb.train(
