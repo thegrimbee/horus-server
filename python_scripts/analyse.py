@@ -81,7 +81,7 @@ def analyse_tos(tos, app="", url=""):
     scanned_apps = list(scans['App'].values)
     scanned_apps = [app.lower() for app in scanned_apps]
     is_scanned = app.lower() in scanned_apps
-    if not is_scanned and tos.strip()== '':
+    if tos.strip()== '':
         print("No terms of service found for " + app + ". Searching the web...")
         if url == '':
             tos_urls = search(app + " terms of service", num=1, stop=1)
@@ -108,6 +108,7 @@ def analyse_tos(tos, app="", url=""):
                 if len(element.text) > LENGTH_CRITERIA and len(element.text.split()) > WORD_CRITERIA:
                     tos += element.text
         print("tos:", tos[:50])
+        print(len(tos.split('.')))
         driver.quit()
 
     memory_use = current_process.memory_info().rss
