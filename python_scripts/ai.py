@@ -19,7 +19,7 @@ import spacy
 import numpy as np
 import pickle
 import os
-
+import time
 nlp = spacy.load('en_core_web_sm')
 
 def custom_loss(true, pred):
@@ -391,7 +391,7 @@ if __name__ == '__main__':
             # ('glove', GloVeEmbeddings(model_name='glove-wiki-gigaword-100'))
         ])),
         ('adasyn', ADASYN(sampling_strategy='auto', n_neighbors=3)),
-        # ('scaler', StandardScaler(with_mean=False)),
+        ('scaler', StandardScaler(with_mean=False)),
         ('clf', CustomXGBClassifier(params=xgb_params, num_boost_round=250, learning_rate=0.075, max_depth=8,
                                     hessian_penalty=0.2, sqrt=False, penalty='factor')),
         # ('clf', GradientBoostingClassifier(
@@ -459,6 +459,7 @@ if __name__ == '__main__':
     # print(grid_search.best_params_)
     # print(grid_search.best_score_ * 2 / length)
     print('testing1')
+    start = time.time()
     pipeline.fit(X_train, Y_train)
     model = pipeline
 
@@ -478,3 +479,5 @@ if __name__ == '__main__':
     print(classification_report(Y_test, Y_pred))
     print(Y_pred.tolist())
     print(Y_test.tolist())
+    end = time.time()
+    print(end - start)

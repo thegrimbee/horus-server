@@ -81,7 +81,7 @@ def analyse_tos(tos, app="", url=""):
     scanned_apps = list(scans['App'].values)
     scanned_apps = [app.lower() for app in scanned_apps]
     is_scanned = app.lower() in scanned_apps
-    if tos.strip()== '':
+    if not is_scanned and tos.strip()== '':
         print("No terms of service found for " + app + ". Searching the web...")
         if url == '':
             tos_urls = search(app + " terms of service", num=1, stop=1)
@@ -118,7 +118,7 @@ def analyse_tos(tos, app="", url=""):
         categorized_sentences = scans[scans['App'].str.lower() == app.lower()].iloc[0].tolist()[1:]
     if not check_valid(categorized_sentences):
         sentences = tos.split('.')
-        model_path = os.path.join(os.path.dirname(__file__), '../ai_models/model2.pkl')
+        model_path = os.path.join(os.path.dirname(__file__), '../ai_models/model3.pkl')
         with open(os.path.join(model_path), 'rb') as file:
             model = CustomUnpickler(file).load()
         memory_use = current_process.memory_info().rss
