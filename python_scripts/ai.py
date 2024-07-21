@@ -338,6 +338,19 @@ class CustomXGBClassifier(BaseEstimator, ClassifierMixin):
         y_pred_prob = self.model.predict(dtest)
         return y_pred_prob
 
+class CustomModel:
+    def __init__(self, model, keywords):
+        self.model = model
+
+    def predict(self, X):
+        passed = False
+        for word in keywords:
+            if word in X:
+                passed = True
+                break
+        if passed:
+            return self.model.predict(X)
+        
 # Define your XGBoost parameters
 xgb_params = {
     'objective': 'multi:softprob',
