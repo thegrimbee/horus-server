@@ -1,4 +1,5 @@
 from data import get_data
+from keywords_extract import extract_keywords
 from sklearn.model_selection import train_test_split, GridSearchCV, StratifiedKFold
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.ensemble import RandomForestClassifier,  GradientBoostingClassifier
@@ -19,7 +20,7 @@ import spacy
 import numpy as np
 import pickle
 import os
-
+import time
 nlp = spacy.load('en_core_web_sm')
 
 def custom_loss(true, pred):
@@ -136,18 +137,16 @@ class SentimentFeatures(BaseEstimator, TransformerMixin):
         return transformed_data
 
 class KeywordFeatures(BaseEstimator, TransformerMixin):
-    def __init__(self, keywords, weight=1, keyword_weights={}):
-        self.keywords = keywords
+    def __init__(self, keywords = [], weight=1, keyword_weights={}):
         self.keyword_weights = keyword_weights
         self.weight = weight
+        self.keywords = keywords
     
     def fit(self, X, y=None):
         return self
     
     def transform(self, X):
-        transformed_data = [[doc.count(keyword) * self.keyword_weights.get(keyword, 1) for keyword in self.keywords] for doc in X]
-        if (self.weight != 1):
-            transformed_data = [[count * self.weight for count in doc] for doc in transformed_data]
+        transformed_data = [[self.keyword_weights[keyword] ** 2 * self.weight if keyword in doc else 0 for keyword in self.keywords] for doc in X]
         return transformed_data
 
 class ClauseContextFeatures(BaseEstimator, TransformerMixin):
@@ -267,6 +266,7 @@ class CustomXGBClassifier(BaseEstimator, ClassifierMixin):
             ((y_true == 1) & (np.argmax(y_pred_prob, axis=1) == 2), 2, 1.5),
             ((y_true == 0) & (np.argmax(y_pred_prob, axis=1) == 2), 2, 8),
             ((y_true == 2) & (np.argmax(y_pred_prob, axis=1) == 2), 2, 0.25),
+            ((y_true == 1) & (np.argmax(y_pred_prob, axis=1) == 1), 1, 0.8),
         ]
         
         if penalty == 'factor':
@@ -338,6 +338,19 @@ class CustomXGBClassifier(BaseEstimator, ClassifierMixin):
         y_pred_prob = self.model.predict(dtest)
         return y_pred_prob
 
+class CustomModel:
+    def __init__(self, model, keywords):
+        self.model = model
+
+    def predict(self, X):
+        passed = False
+        for word in keywords:
+            if word in X:
+                passed = True
+                break
+        if passed:
+            return self.model.predict(X)
+        
 # Define your XGBoost parameters
 xgb_params = {
     'objective': 'multi:softprob',
@@ -361,37 +374,21 @@ if __name__ == '__main__':
     Y_test = val_data['Harm Level']
 
     length = len(X_train)
-    keywords = ["privacy", "data", "rights", "terminate", "warranty", "loss", "age", "personal", 
-                "information", "location", "termination", "cookies", "security", "third-party",
-                "personal data", "personal information", "personal details", "collect information",
-                "without notice", "collect"]
-    keyword_weights = {
-        "personal data": 5,
-        "personal information": 5,
-        "personal details": 5,
-        "collect information": 5,
-        "without notice": 5,
-        "loss": 3,
-        "collect": 2,
-        "location": 2,
-        "personal": 2,
-        "data": 1.5,
-        "rights": 1.5,
-    }
+    keywords, keyword_weights = extract_keywords()
     pipeline = ImbPipeline([
         # ('smote', SMOTE(sampling_strategy='auto')),
         ('features', FeatureUnion([
-            ('keywords', KeywordFeatures(keywords=keywords, weight=0.25, keyword_weights=keyword_weights)),
+            ('keywords', KeywordFeatures(weight=0.5, keywords=list(keyword_weights.keys()), keyword_weights=keyword_weights)),
             ('pos_tags', POSTagFeatures(weight=0.7)),
             ('ner', NERFeatures(weight=0.95)),
             ('dependency', DependencyFeatures(weight=0.7)),
-            ('clause_context', ClauseContextFeatures(keywords=keywords, weight=0.6, keyword_weights={})),
+            ('clause_context', ClauseContextFeatures(keywords=list(keyword_weights.keys()), weight=0.6, keyword_weights={})),
             ('sentiment', SentimentFeatures(weight=0.3)),
             ('sentence_transformer', SentenceTransformerFeatures(weight=0.8)),
             # ('glove', GloVeEmbeddings(model_name='glove-wiki-gigaword-100'))
         ])),
         ('adasyn', ADASYN(sampling_strategy='auto', n_neighbors=3)),
-        # ('scaler', StandardScaler(with_mean=False)),
+        ('scaler', StandardScaler(with_mean=False)),
         ('clf', CustomXGBClassifier(params=xgb_params, num_boost_round=250, learning_rate=0.075, max_depth=8,
                                     hessian_penalty=0.2, sqrt=False, penalty='factor')),
         # ('clf', GradientBoostingClassifier(
@@ -433,23 +430,23 @@ if __name__ == '__main__':
         #     )),
     ])
 
-    # Define parameter grid for GridSearchCV
-    # param_grid = {
-    #     'features__keywords__weight': [0.2, 0.4], # low
-    #     # 'features__keywords__keyword_weights': [keyword_weights],
-    #     # 'features__pos_tags__weight': [0.7], # low
-    #     # 'features__ner__weight': [0.95],
-    #     # 'features__dependency__weight': [0.7], # low
-    #     # 'features__clause_context__weight': [0.6], # low
-    #     # 'features__clause_context__keyword_weights': [{}],
-    #     # 'features__sentiment__weight': [0.3], # low
-    #     # 'features__sentence_transformer__weight': [0.8], # high
-    #     # 'clf__num_boost_round': [250],
-    #     # 'clf__learning_rate': [0.075],
-    #     # 'clf__max_depth': [7],
-    #     # 'clf__hessian_penalty': [1],
-    #     # 'clf__sqrt': [True],
-    # }
+    # # Define parameter grid for GridSearchCV
+    param_grid = {
+        'features__keywords__weight': [0.25, 0.5, 0.75], # low
+        # 'features__keywords__keyword_weights': [keyword_weights],
+        # 'features__pos_tags__weight': [0.7], # low
+        # 'features__ner__weight': [0.95],
+        # 'features__dependency__weight': [0.7], # low
+        # 'features__clause_context__weight': [0.5, 0.6, 0.7], # low
+        # 'features__clause_context__keyword_weights': [{}],
+        # 'features__sentiment__weight': [0.3], # low
+        # 'features__sentence_transformer__weight': [0.8], # high
+        # 'clf__num_boost_round': [250],
+        # 'clf__learning_rate': [0.075],
+        # 'clf__max_depth': [7],
+        # 'clf__hessian_penalty': [1],
+        # 'clf__sqrt': [True],
+    }
 
 
     # stratified_kfold = StratifiedKFold(n_splits=2, shuffle=True, random_state=42)
@@ -459,10 +456,11 @@ if __name__ == '__main__':
     # print(grid_search.best_params_)
     # print(grid_search.best_score_ * 2 / length)
     print('testing1')
+    start = time.time()
     pipeline.fit(X_train, Y_train)
     model = pipeline
 
-    model_path = os.path.join(os.path.dirname(__file__), '../ai_models/model2.pkl')
+    model_path = os.path.join(os.path.dirname(__file__), '../ai_models/model4.pkl')
     # Save the model to a file
     with open(model_path, 'wb') as file:
         pickle.dump(model, file)
@@ -478,3 +476,5 @@ if __name__ == '__main__':
     print(classification_report(Y_test, Y_pred))
     print(Y_pred.tolist())
     print(Y_test.tolist())
+    end = time.time()
+    print(end - start)
