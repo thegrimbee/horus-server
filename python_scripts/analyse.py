@@ -102,9 +102,11 @@ def analyse_tos(tos, app="", url=""):
         driver.get(url)
         driver.implicitly_wait(10)
         p_elements = driver.find_elements(By.TAG_NAME, 'p')
+        div_elements = driver.find_elements(By.TAG_NAME, 'div')
+        li_elements = driver.find_elements(By.TAG_NAME, 'li')
         LENGTH_CRITERIA = 30
         WORD_CRITERIA = 5
-        SENTENCES_CRITERIA = 5
+        SENTENCES_CRITERIA = 800
         print("Received elements")
         sentences = []
         for element in p_elements:
@@ -114,12 +116,18 @@ def analyse_tos(tos, app="", url=""):
             except:
                 continue
         if len(sentences) < SENTENCES_CRITERIA:
-            div_elements = driver.find_elements(By.TAG_NAME, 'div')
             for element in div_elements:
                 try:
                     if len(element.text) > LENGTH_CRITERIA: # and len(element.text.split()) > WORD_CRITERIA:
                         sentences.extend(element.text.split('.'))
 
+                except:
+                    continue
+        if len(sentences) < SENTENCES_CRITERIA:
+            for element in li_elements:
+                try:
+                    if len(element.text) > LENGTH_CRITERIA: # and len(element.text.split()) > WORD_CRITERIA:
+                        sentences.extend(element.text.split('.'))
                 except:
                     continue
         print("tos:", sentences[:5])
@@ -142,8 +150,8 @@ def analyse_tos(tos, app="", url=""):
         print(f"Current memory usage: {memory_use / 1024**2:.2f} MB")
         sentences = sentences
         categorized_sentences = ["","",""]
-        predicted_values = model.predict(sentences).tolist()
-        for i in range(len(sentences)):
+        predicted_values = model.predict(sentences[:2000]).tolist()
+        for i in range(len(sentences[:2000])):
             categorized_sentences[predicted_values[i]] += sentences[i] + '.\n'
         memory_use = current_process.memory_info().rss
         print("Finished analysing")

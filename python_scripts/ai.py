@@ -388,7 +388,7 @@ if __name__ == '__main__':
     Y_test = val_data['Harm Level']
 
     length = len(X_train)
-    keywords, keyword_weights = extract_keywords(data=train_data)
+    keywords, keyword_weights = extract_keywords()
     pipeline = ImbPipeline([
         # ('smote', SMOTE(sampling_strategy='auto')),
         ('features', FeatureUnion([
