@@ -8,6 +8,7 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
 import warnings
 import psutil
+import time
 
 webdriver_options = Options()
 webdriver_options.add_argument("--headless")
@@ -55,14 +56,21 @@ class CustomUnpickler(pickle.Unpickler):
 
         return super().find_class(module, name)
 
-def summarize(text):
-    if text == '':
+def summarize(text, light=False):
+    if len(text) < 300 and len(text.split(' ')) < 25:
         return text
-    tokenizer = AutoTokenizer.from_pretrained("t5-base")
-    model = T5ForConditionalGeneration.from_pretrained("t5-base", return_dict=True)
-    inputs = tokenizer.encode("summarize: " + text, return_tensors="pt", max_length=512, truncation=True)
-    ouputs = model.generate(inputs, max_length=150, min_length=75, length_penalty=5.0, num_beams=2, early_stopping=True)
-    return tokenizer.decode(ouputs[0], skip_special_tokens=True)
+    if not light:
+        tokenizer = AutoTokenizer.from_pretrained("t5-base")
+        model = T5ForConditionalGeneration.from_pretrained("t5-base", return_dict=True)
+        inputs = tokenizer.encode("summarize: " + text, return_tensors="pt", max_length=512, truncation=True)
+        ouputs = model.generate(inputs, max_length=50, min_length=15, num_beams=1)
+        return tokenizer.decode(ouputs[0], skip_special_tokens=True)
+    else:
+        tokenizer = AutoTokenizer.from_pretrained("t5-small")
+        model = T5ForConditionalGeneration.from_pretrained("t5-small", return_dict=True)
+        inputs = tokenizer.encode("summarize: " + text, return_tensors="pt", max_length=256, truncation=True)
+        ouputs = model.generate(inputs, max_length=150, min_length=15, num_beams=1)
+        return tokenizer.decode(ouputs[0], skip_special_tokens=True)
 
 def predict(sentence, model):
     return model.predict([sentence])[0]
@@ -81,7 +89,7 @@ def analyse_tos(tos, app="", url=""):
     scanned_apps = list(scans['App'].values)
     scanned_apps = [app.lower() for app in scanned_apps]
     is_scanned = app.lower() in scanned_apps
-    if tos.strip()== '':
+    if not is_scanned and tos.strip()== '':
         print("No terms of service found for " + app + ". Searching the web...")
         if url == '':
             tos_urls = search(app + " terms of service", num=1, stop=1)
@@ -96,20 +104,29 @@ def analyse_tos(tos, app="", url=""):
         p_elements = driver.find_elements(By.TAG_NAME, 'p')
         LENGTH_CRITERIA = 30
         WORD_CRITERIA = 5
-        with open(os.path.join(os.path.dirname(__file__), '../result.html'), 'w', errors='ignore', encoding='utf-8') as file:
-            page_source = driver.page_source
-            file.write(page_source)
+        SENTENCES_CRITERIA = 5
+        print("Received elements")
+        sentences = []
         for element in p_elements:
-            if len(element.text) > LENGTH_CRITERIA and len(element.text.split()) > WORD_CRITERIA:
-                tos += element.text
-        if len(tos) < LENGTH_CRITERIA:
+            try:
+                if len(element.text) > LENGTH_CRITERIA: # and len(element.text.split()) > WORD_CRITERIA:
+                    sentences.extend(element.text.split('.'))
+            except:
+                continue
+        if len(sentences) < SENTENCES_CRITERIA:
             div_elements = driver.find_elements(By.TAG_NAME, 'div')
             for element in div_elements:
-                if len(element.text) > LENGTH_CRITERIA and len(element.text.split()) > WORD_CRITERIA:
-                    tos += element.text
-        print("tos:", tos[:50])
-        driver.quit()
+                try:
+                    if len(element.text) > LENGTH_CRITERIA: # and len(element.text.split()) > WORD_CRITERIA:
+                        sentences.extend(element.text.split('.'))
 
+                except:
+                    continue
+        print("tos:", sentences[:5])
+        driver.quit()
+    else:
+        sentences = tos.split('.')
+    print("Finished online processing")
     memory_use = current_process.memory_info().rss
     print(f"Current memory usage: {memory_use / 1024**2:.2f} MB")
     categorized_sentences = ["","",""]
@@ -117,19 +134,25 @@ def analyse_tos(tos, app="", url=""):
         print('App found in scans.csv')
         categorized_sentences = scans[scans['App'].str.lower() == app.lower()].iloc[0].tolist()[1:]
     if not check_valid(categorized_sentences):
-        sentences = tos.split('.')
-        model_path = os.path.join(os.path.dirname(__file__), '../ai_models/model2.pkl')
+        model_path = os.path.join(os.path.dirname(__file__), '../ai_models/model4.pkl')
         with open(os.path.join(model_path), 'rb') as file:
             model = CustomUnpickler(file).load()
+        print("Loaded model")
         memory_use = current_process.memory_info().rss
         print(f"Current memory usage: {memory_use / 1024**2:.2f} MB")
+        sentences = sentences
         categorized_sentences = ["","",""]
-        for sentence in sentences:
-            categorized_sentences[predict(sentence, model)] += "\n" + sentence
+        predicted_values = model.predict(sentences).tolist()
+        for i in range(len(sentences)):
+            categorized_sentences[predicted_values[i]] += sentences[i] + '.\n'
         memory_use = current_process.memory_info().rss
+        print("Finished analysing")
         print(f"Current memory usage: {memory_use / 1024**2:.2f} MB")
+        start = time.time()
         for i in range(3):
-            categorized_sentences.append(summarize(categorized_sentences[i]))
+            categorized_sentences.append(summarize(categorized_sentences[i], light=i==0))
+        print (time.time() - start)
+        print("Finished summarizing")
         dct = {'App': app,
                               'Level_0': categorized_sentences[0],
                               'Level_1': categorized_sentences[1],
@@ -156,4 +179,4 @@ def analyse_tos(tos, app="", url=""):
 if __name__ == '__main__':
     app = sys.argv[1]
     url = sys.argv[2]
-    print(analyse_tos("", app, url))
+    print(analyse_tos('', app, url))

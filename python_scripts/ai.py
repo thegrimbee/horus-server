@@ -146,7 +146,7 @@ class KeywordFeatures(BaseEstimator, TransformerMixin):
         return self
     
     def transform(self, X):
-        transformed_data = [[self.keyword_weights[keyword] ** 2 * self.weight if keyword in doc else 0 for keyword in self.keywords] for doc in X]
+        transformed_data = [[self.keyword_weights[keyword] * self.weight if keyword in doc else 0 for keyword in self.keywords] for doc in X]
         return transformed_data
 
 class ClauseContextFeatures(BaseEstimator, TransformerMixin):
@@ -260,13 +260,13 @@ class CustomXGBClassifier(BaseEstimator, ClassifierMixin):
             hessian[:, i] = y_pred_prob[:, i] * (1.0 - y_pred_prob[:, i])
         penalty_conditions = [
             ((y_true == 2) & (np.argmax(y_pred_prob, axis=1) == 0), 0, 20),
-            ((y_true == 1) & (np.argmax(y_pred_prob, axis=1) == 0), 0, 6.5),
+            ((y_true == 1) & (np.argmax(y_pred_prob, axis=1) == 0), 0, 1),
             ((y_true == 2) & (np.argmax(y_pred_prob, axis=1) == 1), 1, 0.15),
-            ((y_true == 0) & (np.argmax(y_pred_prob, axis=1) == 1), 1, 1),
+            ((y_true == 0) & (np.argmax(y_pred_prob, axis=1) == 1), 1, 5),
             ((y_true == 1) & (np.argmax(y_pred_prob, axis=1) == 2), 2, 1.5),
             ((y_true == 0) & (np.argmax(y_pred_prob, axis=1) == 2), 2, 8),
             ((y_true == 2) & (np.argmax(y_pred_prob, axis=1) == 2), 2, 0.25),
-            ((y_true == 1) & (np.argmax(y_pred_prob, axis=1) == 1), 1, 0.8),
+            ((y_true == 1) & (np.argmax(y_pred_prob, axis=1) == 1), 1, 0.75),
         ]
         
         if penalty == 'factor':
@@ -341,15 +341,29 @@ class CustomXGBClassifier(BaseEstimator, ClassifierMixin):
 class CustomModel:
     def __init__(self, model, keywords):
         self.model = model
+        self.keywords = keywords
 
     def predict(self, X):
-        passed = False
-        for word in keywords:
-            if word in X:
-                passed = True
-                break
-        if passed:
-            return self.model.predict(X)
+        predict_indices = []
+        predict_sentences = []
+        result = []
+        for i in range(len(X)):
+            passed = False
+            for keyword in self.keywords:
+                if keyword in X[i]:
+                    passed = True
+                    break
+            if passed:
+                predict_indices.append(i)
+                predict_sentences.append(X[i])
+            else:
+                result.append(0)
+        if len(predict_sentences) > 0:
+            predictions = self.model.predict(predict_sentences)
+            for i in range(len(predictions)):
+                result.insert(predict_indices[i], predictions[i])
+        return np.array(result)
+
         
 # Define your XGBoost parameters
 xgb_params = {
@@ -374,7 +388,7 @@ if __name__ == '__main__':
     Y_test = val_data['Harm Level']
 
     length = len(X_train)
-    keywords, keyword_weights = extract_keywords()
+    keywords, keyword_weights = extract_keywords(data=train_data)
     pipeline = ImbPipeline([
         # ('smote', SMOTE(sampling_strategy='auto')),
         ('features', FeatureUnion([
@@ -432,7 +446,7 @@ if __name__ == '__main__':
 
     # # Define parameter grid for GridSearchCV
     param_grid = {
-        'features__keywords__weight': [0.25, 0.5, 0.75], # low
+        # 'features__keywords__weight': [0.25, 0.5, 0.75], # low
         # 'features__keywords__keyword_weights': [keyword_weights],
         # 'features__pos_tags__weight': [0.7], # low
         # 'features__ner__weight': [0.95],
@@ -456,7 +470,7 @@ if __name__ == '__main__':
     # print(grid_search.best_params_)
     # print(grid_search.best_score_ * 2 / length)
     print('testing1')
-    start = time.time()
+    
     pipeline.fit(X_train, Y_train)
     model = pipeline
 
@@ -465,8 +479,8 @@ if __name__ == '__main__':
     with open(model_path, 'wb') as file:
         pickle.dump(model, file)
 
-    # Predict on the test set
-    Y_pred = model.predict(X_test) 
+    start = time.time()
+    Y_pred = model.predict(X_test.tolist()) 
     print('testing2')
     # Evaluate the model
 
