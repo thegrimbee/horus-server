@@ -14,6 +14,7 @@ webdriver_options.add_argument("--headless")
 
 # Get current process ID
 pid = os.getpid()
+print(f"Process ID: {pid}")
 # Get the process object using PID
 current_process = psutil.Process(pid)
 
@@ -82,6 +83,8 @@ def check_valid(c_s):
     return total > 10
 
 def analyse_tos(tos, app="", url=""):
+    current = pd.read_csv(os.path.join(os.path.dirname(__file__), '../current.csv'))
+    pd.concat([current, pd.DataFrame({'app': [app]})], ignore_index=True).to_csv(os.path.join(os.path.dirname(__file__), '../current.csv'), index=False)
     print(f'Analysing {app}')
     scans_path = os.path.join(os.path.dirname(__file__), '../scans.csv')
     scans = pd.read_csv(scans_path)
@@ -185,6 +188,9 @@ def analyse_tos(tos, app="", url=""):
             print(sentence[:50])
     memory_use = current_process.memory_info().rss
     print(f"Current memory usage: {memory_use / 1024**2:.2f} MB")
+    current = pd.read_csv(os.path.join(os.path.dirname(__file__), '../current.csv'))
+    current = current[current['app'] != app]
+    current.to_csv(os.path.join(os.path.dirname(__file__), '../current.csv'), index=False)
     return categorized_sentences
 
 if __name__ == '__main__':
