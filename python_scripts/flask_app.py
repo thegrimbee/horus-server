@@ -18,10 +18,18 @@ def index():
 def analyse():
     # Get the value from the post request
     print("Received request")
+    current = pd.read_csv(path.join(path.dirname(__file__), '../current.csv'))
     data = request.get_json()
     tos = data.get('tos')
     appName = data.get('appName')
     url = data.get('url')
+    if appName in list(current['app'].values):
+        return jsonify({"danger": "The app is being scanned. Try again later",
+                        "warning": "The app is being scanned. Try again later",
+                        "normal": "The app is being scanned. Try again later",
+                        "danger_summary": "The app is being scanned. Try again later",
+                        "warning_summary": "The app is being scanned. Try again later",
+                        "normal_summary": "The app is being scanned. Try again later"})
     categorized_sentences = analyse_tos(tos, appName, url)
     for i in range(len(categorized_sentences)):
         if type(categorized_sentences[i]) != str or not categorized_sentences[i]:
@@ -41,4 +49,4 @@ def scans():
     print(scansList)
     return jsonify({"scans": scansList})
 
-app.run(debug=True)
+app.run(debug=True, threaded=True, port=5000)
