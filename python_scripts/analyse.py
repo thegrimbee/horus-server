@@ -72,15 +72,12 @@ def summarize(text, light=False):
         ouputs = model.generate(inputs, max_length=150, min_length=15, num_beams=1)
         return tokenizer.decode(ouputs[0], skip_special_tokens=True)
 
-def predict(sentence, model):
-    return model.predict([sentence])[0]
-
 def check_valid(c_s):
     total = 0
     for i in c_s[:3]:
         if type(i) == str:
             total += len(i)
-    return total > 10
+    return total > 25
 
 def analyse_tos(tos, app="", url=""):
     current = pd.read_csv(os.path.join(os.path.dirname(__file__), '../current.csv'))
